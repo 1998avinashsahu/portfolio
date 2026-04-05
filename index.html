@@ -1,661 +1,425 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Avinash Sahu - Sr. DevOps & Cloud Engineer | AWS, GCP, Azure | Terraform, Kubernetes, CI/CD">
-    <title>Avinash Sahu | Sr. DevOps & Cloud Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        :root{--bg:#0a0f1c;--bg2:#111827;--bg3:#1a2237;--card:#151d30;--accent:#3b82f6;--accent2:#60a5fa;--green:#22c55e;--orange:#f97316;--purple:#8b5cf6;--red:#ef4444;--gold:#fbbf24;--cyan:#06b6d4;--text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;--border:#1e3a5f;--glow:rgba(59,130,246,0.15)}
-        *{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth}
-        body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-        ::-webkit-scrollbar{width:6px}
-        ::-webkit-scrollbar-track{background:var(--bg)}
-        ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
-
-        /* Animated Background */
-        .bg-particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
-        .bg-particles canvas{width:100%;height:100%}
-
-        /* Nav */
-        .nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(10,15,28,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(59,130,246,0.1);transition:all 0.3s}
-        .nav.scrolled{background:rgba(10,15,28,0.95);box-shadow:0 4px 30px rgba(0,0,0,0.5)}
-        .nav-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 2rem}
-        .nav-logo{font-size:1.4rem;font-weight:800;text-decoration:none;background:linear-gradient(135deg,var(--accent),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center}
-        .nav-links a{color:var(--text2);text-decoration:none;font-size:0.85rem;font-weight:500;transition:all 0.3s;position:relative}
-        .nav-links a:hover{color:var(--accent)}
-        .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width 0.3s}
-        .nav-links a:hover::after{width:100%}
-        .hamburger{display:none;cursor:pointer;color:var(--text);font-size:1.5rem}
-
-        /* Buttons */
-        .btn{padding:0.7rem 1.5rem;border-radius:10px;text-decoration:none;font-weight:600;font-size:0.85rem;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.5rem;position:relative;overflow:hidden}
-        .btn-primary{background:linear-gradient(135deg,var(--accent),var(--purple));color:#fff;border:none}
-        .btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(59,130,246,0.4)}
-        .btn-primary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transition:left 0.5s}
-        .btn-primary:hover::before{left:100%}
-        .btn-outline{border:1px solid var(--border);color:var(--text);background:transparent}
-        .btn-outline:hover{border-color:var(--accent);color:var(--accent);background:rgba(59,130,246,0.05)}
-        .btn-sm{padding:0.4rem 1rem;font-size:0.8rem;border-radius:8px}
-
-        /* Sections */
-        section{padding:6rem 2rem;position:relative;z-index:1}
-        .container{max-width:1200px;margin:0 auto}
-        .section-header{text-align:center;margin-bottom:4rem}
-        .section-badge{display:inline-block;padding:0.3rem 1rem;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:50px;font-size:0.75rem;color:var(--accent2);margin-bottom:1rem;letter-spacing:1px;text-transform:uppercase}
-        .section-title{font-size:2.5rem;font-weight:900;margin-bottom:0.5rem}
-        .section-title span{background:linear-gradient(135deg,var(--accent),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .section-subtitle{color:var(--text3);font-size:1rem;max-width:600px;margin:0 auto}
-
-        /* Hero */
-        .hero{min-height:100vh;display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden}
-        .hero::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(59,130,246,0.08) 0%,transparent 70%);border-radius:50%;animation:pulse 8s ease-in-out infinite}
-        .hero::after{content:'';position:absolute;bottom:-200px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(139,92,246,0.06) 0%,transparent 70%);border-radius:50%;animation:pulse 10s ease-in-out infinite reverse}
-        @keyframes pulse{0%,100%{transform:scale(1);opacity:0.5}50%{transform:scale(1.1);opacity:1}}
-        .hero-grid{display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center}
-        .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 1rem;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:50px;font-size:0.8rem;color:var(--green);margin-bottom:1.5rem}
-        .hero-badge .dot{width:8px;height:8px;background:var(--green);border-radius:50%;animation:blink 2s infinite}
-        @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-        .hero h1{font-size:3.5rem;font-weight:900;line-height:1.1;margin-bottom:1.5rem}
-        .hero h1 .gradient{background:linear-gradient(135deg,var(--accent),var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradientShift 5s ease infinite}
-        @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-        .hero p{font-size:1.1rem;color:var(--text2);max-width:550px;margin-bottom:2rem}
-        .hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
-        .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
-        .hero-stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center;transition:all 0.3s}
-        .hero-stat:hover{border-color:var(--accent);transform:translateY(-3px)}
-        .hero-stat .number{font-size:1.8rem;font-weight:800}
-        .hero-stat .label{font-size:0.7rem;color:var(--text3);margin-top:0.2rem}
-
-        /* Hero Photo */
-        .hero-photo{position:relative}
-        .hero-photo-inner{width:350px;height:350px;border-radius:30px;overflow:hidden;border:3px solid var(--border);position:relative;transform:rotate(3deg);transition:transform 0.5s}
-        .hero-photo-inner:hover{transform:rotate(0deg)}
-        .hero-photo-inner img{width:100%;height:100%;object-fit:cover;object-position:top}
-        .hero-photo-float{position:absolute;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:0.6rem 1rem;font-size:0.75rem;backdrop-filter:blur(10px);animation:float 3s ease-in-out infinite}
-        .float-1{top:-10px;right:-20px;animation-delay:0s}
-        .float-2{bottom:40px;left:-30px;animation-delay:1s}
-        .float-3{bottom:-10px;right:20px;animation-delay:2s}
-        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-
-        /* About */
-        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
-        .about-text p{color:var(--text2);margin-bottom:1rem;font-size:0.95rem}
-        .about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-        .highlight-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;transition:all 0.4s;position:relative;overflow:hidden}
-        .highlight-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--purple));transform:scaleX(0);transition:transform 0.4s;transform-origin:left}
-        .highlight-card:hover::before{transform:scaleX(1)}
-        .highlight-card:hover{border-color:var(--accent);transform:translateY(-5px);box-shadow:0 20px 40px rgba(59,130,246,0.1)}
-        .highlight-card .icon{font-size:1.8rem;margin-bottom:0.8rem;display:inline-block}
-        .highlight-card h4{font-size:1rem;margin-bottom:0.3rem}
-        .highlight-card p{font-size:0.8rem;color:var(--text3)}
-
-        /* Skills */
-        .skills-container{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
-        .skill-item{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.2rem;text-align:center;transition:all 0.4s;cursor:default}
-        .skill-item:hover{border-color:var(--accent);transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,0.3)}
-        .skill-item i,.skill-item .skill-icon{font-size:2rem;margin-bottom:0.5rem;display:block}
-        .skill-item span{font-size:0.75rem;color:var(--text2);font-weight:500}
-        .skill-group-title{grid-column:1/-1;font-size:0.85rem;color:var(--accent);font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:0.5rem 0;margin-top:1rem;border-bottom:1px solid var(--border)}
-
-        /* Experience Timeline */
-        .timeline{position:relative;max-width:800px;margin:0 auto}
-        .timeline::before{content:'';position:absolute;left:30px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--purple),var(--green))}
-        .timeline-item{position:relative;padding-left:70px;margin-bottom:3rem}
-        .timeline-dot{position:absolute;left:21px;top:5px;width:20px;height:20px;border-radius:50%;border:3px solid var(--bg);z-index:2}
-        .timeline-item.active .timeline-dot{background:var(--green);box-shadow:0 0 20px rgba(34,197,94,0.5)}
-        .timeline-item .timeline-dot{background:var(--accent)}
-        .timeline-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;transition:all 0.3s}
-        .timeline-card:hover{border-color:var(--accent);box-shadow:0 10px 30px rgba(0,0,0,0.3)}
-        .timeline-header{display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem}
-        .timeline-header h3{font-size:1.1rem}
-        .timeline-date{font-size:0.75rem;color:var(--bg);background:linear-gradient(135deg,var(--accent),var(--purple));padding:0.2rem 0.8rem;border-radius:50px;font-weight:600}
-        .timeline-company{font-size:0.85rem;color:var(--text2);margin-bottom:0.8rem}
-        .timeline-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem}
-        .timeline-tags span{font-size:0.65rem;padding:0.2rem 0.5rem;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:4px;color:var(--accent2)}
-
-        /* Projects */
-        .projects-filter{display:flex;justify-content:center;gap:0.5rem;margin-bottom:2rem;flex-wrap:wrap}
-        .filter-btn{padding:0.4rem 1rem;border:1px solid var(--border);border-radius:50px;background:transparent;color:var(--text2);font-size:0.8rem;cursor:pointer;transition:all 0.3s;font-family:inherit}
-        .filter-btn.active,.filter-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
-        .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:1.5rem}
-        .project-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all 0.4s;position:relative}
-        .project-card:hover{border-color:var(--accent);transform:translateY(-8px);box-shadow:0 25px 50px rgba(0,0,0,0.4)}
-        .project-img{width:100%;height:180px;object-fit:cover;transition:transform 0.5s}
-        .project-card:hover .project-img{transform:scale(1.05)}
-        .project-content{padding:1.5rem}
-        .project-tag{display:inline-block;padding:0.2rem 0.6rem;border-radius:6px;font-size:0.7rem;font-weight:700;margin-bottom:0.8rem}
-        .tag-aws{background:rgba(249,165,27,0.15);color:#f9a51b}
-        .tag-gcp{background:rgba(66,133,244,0.15);color:#4285f4}
-        .tag-azure{background:rgba(0,120,212,0.15);color:#0078d4}
-        .tag-ai{background:rgba(139,92,246,0.15);color:var(--purple)}
-        .tag-multi{background:rgba(34,197,94,0.15);color:var(--green)}
-        .project-content h3{font-size:1.05rem;margin-bottom:0.5rem}
-        .project-content p{font-size:0.82rem;color:var(--text3);margin-bottom:1rem;line-height:1.5}
-        .project-tech{display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1rem}
-        .project-tech span{font-size:0.65rem;padding:0.15rem 0.5rem;background:var(--bg);border-radius:4px;color:var(--text2)}
-        .project-links a{color:var(--accent);font-size:0.8rem;text-decoration:none;font-weight:500;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.3rem}
-        .project-links a:hover{color:var(--accent2);gap:0.5rem}
-
-        /* Metrics Counter */
-        .metrics-section{background:linear-gradient(135deg,rgba(59,130,246,0.05),rgba(139,92,246,0.05));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:4rem 2rem}
-        .metrics-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;max-width:1200px;margin:0 auto}
-        .metric-item{text-align:center}
-        .metric-item .counter{font-size:3rem;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .metric-item .label{font-size:0.8rem;color:var(--text3);margin-top:0.3rem}
-
-        /* Certifications */
-        .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-        .cert-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;display:flex;align-items:center;gap:1rem;transition:all 0.3s}
-        .cert-card:hover{border-color:var(--gold);transform:translateY(-3px)}
-        .cert-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
-
-        /* Contact */
-        .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
-        .contact-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;text-align:center;transition:all 0.4s;text-decoration:none;color:inherit;position:relative;overflow:hidden}
-        .contact-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(59,130,246,0.05),rgba(139,92,246,0.05));opacity:0;transition:opacity 0.3s}
-        .contact-card:hover{border-color:var(--accent);transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
-        .contact-card:hover::before{opacity:1}
-        .contact-card i{font-size:2rem;margin-bottom:1rem;position:relative;z-index:1}
-        .contact-card h4{position:relative;z-index:1;margin-bottom:0.3rem}
-        .contact-card p{font-size:0.82rem;color:var(--text3);position:relative;z-index:1}
-
-        /* Footer */
-        .footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text3);font-size:0.8rem}
-        .footer a{color:var(--accent);text-decoration:none}
-
-        /* Animations */
-        .reveal{opacity:0;transform:translateY(40px);transition:all 0.8s cubic-bezier(0.4,0,0.2,1)}
-        .reveal.visible{opacity:1;transform:translateY(0)}
-        .reveal-left{opacity:0;transform:translateX(-40px);transition:all 0.8s cubic-bezier(0.4,0,0.2,1)}
-        .reveal-left.visible{opacity:1;transform:translateX(0)}
-        .reveal-right{opacity:0;transform:translateX(40px);transition:all 0.8s cubic-bezier(0.4,0,0.2,1)}
-        .reveal-right.visible{opacity:1;transform:translateX(0)}
-
-        /* Responsive */
-        @media(max-width:768px){
-            .hero-grid{grid-template-columns:1fr;text-align:center}
-            .hero h1{font-size:2.2rem}
-            .hero-photo{display:none}
-            .hero-stats{grid-template-columns:repeat(2,1fr)}
-            .hero-buttons{justify-content:center}
-            .about-grid{grid-template-columns:1fr}
-            .skills-container{grid-template-columns:repeat(3,1fr)}
-            .metrics-grid{grid-template-columns:repeat(2,1fr)}
-            .projects-grid{grid-template-columns:1fr}
-            .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(10,15,28,0.98);flex-direction:column;padding:1.5rem 2rem;border-bottom:1px solid var(--border);gap:1rem}
-            .nav-links.active{display:flex}
-            .hamburger{display:block}
-            section{padding:3rem 1.2rem}
-            .section-title{font-size:1.8rem}
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Avinash Sahu - Sr. DevOps & Cloud Engineer | AWS, GCP, Azure | Terraform, Kubernetes, CI/CD | AI + DevOps">
+  <title>Avinash Sahu | Sr. DevOps & Cloud Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- Particle Background -->
-<div class="bg-particles"><canvas id="particles"></canvas></div>
-
-<!-- Navigation -->
-<nav class="nav" id="nav">
+  <!-- ===== NAVBAR ===== -->
+  <nav class="nav" id="navbar">
     <div class="nav-inner">
-        <a href="#" class="nav-logo">Avinash Sahu</a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="https://github.com/1998avinashsahu/1998avinashsahu/blob/main/AvinashSahu_DevOps_Resume.pdf" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-download"></i> Resume</a></li>
-        </ul>
-        <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('active')"><i class="fas fa-bars"></i></div>
+      <a href="#hero" class="nav-logo">AS<span class="dot">.</span></a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li>
+          <a href="https://github.com/1998avinashsahu/1998avinashsahu/blob/main/AvinashSahu_DevOps_Resume.pdf" target="_blank" class="btn btn-sm btn-accent">
+            <i class="fas fa-download"></i> Resume
+          </a>
+        </li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="fas fa-sun icon-sun"></i>
+          <i class="fas fa-moon icon-moon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-</nav>
+  </nav>
 
-<!-- Hero -->
-<section class="hero">
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-glow"></div>
     <div class="container">
-        <div class="hero-grid">
-            <div class="reveal-left">
-                <div class="hero-badge"><span class="dot"></span> Open to Opportunities</div>
-                <h1>I Build <span class="gradient">Cloud Infrastructure</span> That Scales.</h1>
-                <p>Sr. DevOps & Cloud Engineer with 3+ years architecting production multi-cloud infrastructure on AWS, GCP & Azure for US-based clients.</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> View Work</a>
-                    <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Hire Me</a>
-                    <a href="https://github.com/1998avinashsahu" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="hero-stat"><div class="number" style="color:var(--accent)"><span class="counter" data-target="45">0</span>+</div><div class="label">Microservices</div></div>
-                    <div class="hero-stat"><div class="number" style="color:var(--green)"><span class="counter" data-target="50">0</span>+</div><div class="label">CI/CD Pipelines</div></div>
-                    <div class="hero-stat"><div class="number" style="color:var(--orange)"><span class="counter" data-target="40">0</span>%</div><div class="label">Cost Savings</div></div>
-                    <div class="hero-stat"><div class="number" style="color:var(--purple)"><span class="counter" data-target="6">0</span></div><div class="label">Projects</div></div>
-                </div>
-            </div>
-            <div class="hero-photo reveal-right">
-                <div class="hero-photo-inner">
-                    <img src="assets/profile-hero.jpg" alt="Avinash Sahu" loading="lazy">
-                </div>
-                <div class="hero-photo-float float-1" style="color:var(--accent)"><i class="fab fa-aws"></i> AWS Expert</div>
-                <div class="hero-photo-float float-2" style="color:var(--green)"><i class="fas fa-shield-alt"></i> FedRAMP</div>
-                <div class="hero-photo-float float-3" style="color:var(--purple)"><i class="fas fa-code-branch"></i> 9K+ Terraform</div>
-            </div>
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge"><span class="pulse-dot"></span> Open to Opportunities</div>
+          <h1>I Build <span class="gradient-text">Cloud Infrastructure</span> That Scales.</h1>
+          <p class="hero-desc">Sr. DevOps & Cloud Engineer with 3+ years architecting production multi-cloud infrastructure on AWS, GCP & Azure for US-based clients.</p>
+          <div class="hero-btns">
+            <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> View Work</a>
+            <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Hire Me</a>
+            <a href="https://github.com/1998avinashsahu" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-card"><span class="stat-num" data-target="45">0</span>+<small>Microservices</small></div>
+            <div class="stat-card"><span class="stat-num" data-target="50">0</span>+<small>CI/CD Pipelines</small></div>
+            <div class="stat-card"><span class="stat-num" data-target="40">0</span>%<small>Cost Savings</small></div>
+            <div class="stat-card"><span class="stat-num" data-target="6">0</span><small>Live Projects</small></div>
+          </div>
         </div>
+      </div>
     </div>
-</section>
-
-<!-- Metrics Bar -->
-<div class="metrics-section">
-    <div class="metrics-grid">
-        <div class="metric-item"><div class="counter" data-target="9000">0</div><div class="label">Lines of Terraform</div></div>
-        <div class="metric-item"><div class="counter" data-target="45">0</div><div class="label">Microservices Deployed</div></div>
-        <div class="metric-item"><div class="counter" data-target="50">0</div><div class="label">CI/CD Pipelines</div></div>
-        <div class="metric-item"><div class="counter" data-target="590">0</div><div class="label">Commits (Top Contributor)</div></div>
-        <div class="metric-item"><div class="counter" data-target="0">0</div><div class="label">Compliance Violations</div></div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
     </div>
-</div>
+  </section>
 
-<!-- About -->
-<section id="about">
+  <!-- ===== METRICS BAR ===== -->
+  <div class="metrics-bar">
+    <div class="container metrics-grid">
+      <div class="metric"><span class="stat-num" data-target="9000">0</span><small>Lines of Terraform</small></div>
+      <div class="metric"><span class="stat-num" data-target="45">0</span><small>Microservices Deployed</small></div>
+      <div class="metric"><span class="stat-num" data-target="50">0</span><small>CI/CD Pipelines</small></div>
+      <div class="metric"><span class="stat-num" data-target="590">0</span><small>Commits</small></div>
+      <div class="metric"><span class="stat-num" data-target="0">0</span><small>Compliance Violations</small></div>
+    </div>
+  </div>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section" id="about">
     <div class="container">
-        <div class="section-header"><span class="section-badge">Who I Am</span><h2 class="section-title">About <span>Me</span></h2><p class="section-subtitle">Building resilient, secure, and scalable cloud infrastructure</p></div>
-        <div class="about-grid">
-            <div class="about-text reveal-left">
-                <p>I'm a Senior DevOps & Cloud Engineer at <strong>Trinesis Technologies</strong>, managing production infrastructure for US-based clients across <strong>AWS, GCP, and Azure</strong>.</p>
-                <p>I specialize in Infrastructure as Code with <strong>Terraform</strong> (9,000+ lines of production IaC), container orchestration with <strong>ECS Fargate, Cloud Run, and AKS</strong>, and building robust CI/CD pipelines with <strong>Jenkins, GitHub Actions, and CodeDeploy</strong>.</p>
-                <p>My recent focus has been on <strong>FedRAMP/FIPS compliance</strong> for a US government client, implementing security hardening across 30+ microservices with zero compliance violations.</p>
-                <p>I'm also exploring <strong>AI + DevOps</strong> &mdash; building intelligent automation agents that can audit infrastructure, review Terraform code, and diagnose production issues using natural language.</p>
-            </div>
-            <div class="about-highlights reveal-right">
-                <div class="highlight-card"><div class="icon" style="color:var(--accent)"><i class="fas fa-shield-alt"></i></div><h4>FedRAMP Compliance</h4><p>FIPS 140-3, KMS, SSL/TLS for federal workloads</p></div>
-                <div class="highlight-card"><div class="icon" style="color:var(--green)"><i class="fas fa-cloud"></i></div><h4>Multi-Cloud</h4><p>Production across AWS, GCP, and Azure</p></div>
-                <div class="highlight-card"><div class="icon" style="color:var(--orange)"><i class="fas fa-cogs"></i></div><h4>50+ Pipelines</h4><p>Jenkins, GitHub Actions, CodeDeploy</p></div>
-                <div class="highlight-card"><div class="icon" style="color:var(--purple)"><i class="fas fa-robot"></i></div><h4>AI + DevOps</h4><p>Building intelligent infra automation agents</p></div>
-            </div>
+      <div class="section-header">
+        <span class="section-badge">Who I Am</span>
+        <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I'm a Senior DevOps & Cloud Engineer at <strong>Trinesis Technologies</strong>, managing production infrastructure for US-based clients across <strong>AWS, GCP, and Azure</strong>.</p>
+          <p>I specialize in Infrastructure as Code with <strong>Terraform</strong> (9,000+ lines of production IaC), container orchestration with <strong>ECS Fargate, Cloud Run, and AKS</strong>, and building robust CI/CD pipelines with <strong>Jenkins, GitHub Actions, and CodeDeploy</strong>.</p>
+          <p>My recent focus has been on <strong>FedRAMP/FIPS compliance</strong> for a US government client, implementing security hardening across 30+ microservices with zero compliance violations.</p>
+          <p>I'm also exploring <strong>AI + DevOps</strong> &mdash; building intelligent automation agents that can audit infrastructure, review Terraform code, and diagnose production issues using natural language.</p>
         </div>
+        <div class="about-cards reveal">
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-shield-alt"></i></div>
+            <h4>FedRAMP Compliance</h4>
+            <p>FIPS 140-3, KMS, SSL/TLS for federal workloads</p>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-cloud"></i></div>
+            <h4>Multi-Cloud</h4>
+            <p>Production across AWS, GCP, and Azure</p>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-cogs"></i></div>
+            <h4>50+ Pipelines</h4>
+            <p>Jenkins, GitHub Actions, CodeDeploy</p>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-robot"></i></div>
+            <h4>AI + DevOps</h4>
+            <p>Building intelligent infra automation agents</p>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Skills -->
-<section id="skills" style="background:var(--bg2)">
+  <!-- ===== SKILLS ===== -->
+  <section class="section section-alt" id="skills">
     <div class="container">
-        <div class="section-header"><span class="section-badge">Technologies</span><h2 class="section-title">Tech <span>Stack</span></h2><p class="section-subtitle">Tools I use daily to build and manage infrastructure</p></div>
-        <div class="skills-container reveal">
-            <div class="skill-group-title">Cloud Platforms</div>
-            <div class="skill-item"><i class="fab fa-aws" style="color:#f9a51b"></i><span>AWS</span></div>
-            <div class="skill-item"><i class="fab fa-google" style="color:#4285f4"></i><span>GCP</span></div>
-            <div class="skill-item"><i class="fab fa-microsoft" style="color:#0078d4"></i><span>Azure</span></div>
-            <div class="skill-item"><i class="fas fa-server" style="color:var(--accent)"></i><span>ECS Fargate</span></div>
-            <div class="skill-item"><i class="fas fa-cloud" style="color:var(--green)"></i><span>Cloud Run</span></div>
-            <div class="skill-item"><i class="fas fa-dharmachakra" style="color:#326ce5"></i><span>AKS</span></div>
-            <div class="skill-group-title">Infrastructure & Containers</div>
-            <div class="skill-item"><i class="fas fa-cubes" style="color:#7b42bc"></i><span>Terraform</span></div>
-            <div class="skill-item"><i class="fab fa-docker" style="color:#2496ed"></i><span>Docker</span></div>
-            <div class="skill-item"><i class="fas fa-dharmachakra" style="color:#326ce5"></i><span>Kubernetes</span></div>
-            <div class="skill-item"><i class="fas fa-anchor" style="color:#0f1689"></i><span>Helm</span></div>
-            <div class="skill-item"><i class="fas fa-cog" style="color:#ee0000"></i><span>Ansible</span></div>
-            <div class="skill-item"><i class="fab fa-linux" style="color:#fcc624"></i><span>Linux</span></div>
-            <div class="skill-group-title">CI/CD & Monitoring</div>
-            <div class="skill-item"><i class="fas fa-hard-hat" style="color:#d24939"></i><span>Jenkins</span></div>
-            <div class="skill-item"><i class="fab fa-github" style="color:var(--text)"></i><span>GitHub Actions</span></div>
-            <div class="skill-item"><i class="fas fa-fire" style="color:#e6522c"></i><span>Prometheus</span></div>
-            <div class="skill-item"><i class="fas fa-chart-area" style="color:#f46800"></i><span>Grafana</span></div>
-            <div class="skill-item"><i class="fas fa-database" style="color:#4169e1"></i><span>PostgreSQL</span></div>
-            <div class="skill-item"><i class="fab fa-python" style="color:#3776ab"></i><span>Python</span></div>
-        </div>
-    </div>
-</section>
+      <div class="section-header">
+        <span class="section-badge">Technologies</span>
+        <h2 class="section-title">Tech <span class="gradient-text">Stack</span></h2>
+        <p class="section-sub">Tools I use daily to build and manage infrastructure</p>
+      </div>
+      <div class="skills-wrap reveal">
 
-<!-- Experience -->
-<section id="experience">
+        <h3 class="skill-group-label">Cloud Platforms</h3>
+        <div class="skills-row">
+          <div class="skill-chip"><i class="fab fa-aws"></i> AWS</div>
+          <div class="skill-chip"><i class="fab fa-google"></i> GCP</div>
+          <div class="skill-chip"><i class="fab fa-microsoft"></i> Azure</div>
+          <div class="skill-chip"><i class="fas fa-server"></i> ECS Fargate</div>
+          <div class="skill-chip"><i class="fas fa-cloud"></i> Cloud Run</div>
+          <div class="skill-chip"><i class="fas fa-dharmachakra"></i> AKS</div>
+        </div>
+
+        <h3 class="skill-group-label">Infrastructure & Containers</h3>
+        <div class="skills-row">
+          <div class="skill-chip"><i class="fas fa-cubes"></i> Terraform</div>
+          <div class="skill-chip"><i class="fab fa-docker"></i> Docker</div>
+          <div class="skill-chip"><i class="fas fa-dharmachakra"></i> Kubernetes</div>
+          <div class="skill-chip"><i class="fas fa-anchor"></i> Helm</div>
+          <div class="skill-chip"><i class="fas fa-cog"></i> Ansible</div>
+        </div>
+
+        <h3 class="skill-group-label">CI/CD & Automation</h3>
+        <div class="skills-row">
+          <div class="skill-chip"><i class="fas fa-hammer"></i> Jenkins</div>
+          <div class="skill-chip"><i class="fab fa-github"></i> GitHub Actions</div>
+          <div class="skill-chip"><i class="fas fa-code-branch"></i> ArgoCD</div>
+          <div class="skill-chip"><i class="fab fa-aws"></i> CodeDeploy</div>
+          <div class="skill-chip"><i class="fas fa-code"></i> Azure DevOps</div>
+        </div>
+
+        <h3 class="skill-group-label">Monitoring & Security</h3>
+        <div class="skills-row">
+          <div class="skill-chip"><i class="fas fa-chart-line"></i> Prometheus</div>
+          <div class="skill-chip"><i class="fas fa-chart-area"></i> Grafana</div>
+          <div class="skill-chip"><i class="fas fa-eye"></i> CloudWatch</div>
+          <div class="skill-chip"><i class="fas fa-shield-alt"></i> FedRAMP/FIPS</div>
+          <div class="skill-chip"><i class="fas fa-lock"></i> IAM/RBAC</div>
+        </div>
+
+        <h3 class="skill-group-label">Languages & Databases</h3>
+        <div class="skills-row">
+          <div class="skill-chip"><i class="fab fa-python"></i> Python</div>
+          <div class="skill-chip"><i class="fas fa-terminal"></i> Bash</div>
+          <div class="skill-chip"><i class="fas fa-database"></i> PostgreSQL</div>
+          <div class="skill-chip"><i class="fas fa-bolt"></i> Redis</div>
+          <div class="skill-chip"><i class="fas fa-database"></i> InfluxDB</div>
+          <div class="skill-chip"><i class="fab fa-linux"></i> Linux</div>
+        </div>
+
+        <h3 class="skill-group-label">AI & Intelligent Automation</h3>
+        <div class="skills-row">
+          <div class="skill-chip"><i class="fas fa-brain"></i> Claude API</div>
+          <div class="skill-chip"><i class="fas fa-robot"></i> AI Agents</div>
+          <div class="skill-chip"><i class="fas fa-magic"></i> Prompt Engineering</div>
+          <div class="skill-chip"><i class="fas fa-project-diagram"></i> n8n Automation</div>
+          <div class="skill-chip"><i class="fas fa-graduation-cap"></i> LLM Integration</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="section" id="projects">
     <div class="container">
-        <div class="section-header"><span class="section-badge">Career</span><h2 class="section-title">Work <span>Experience</span></h2></div>
-        <div class="timeline">
-            <div class="timeline-item active reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <div class="timeline-header"><h3>Sr. Software Engineer (DevOps)</h3><span class="timeline-date">Dec 2022 - Present</span></div>
-                    <div class="timeline-company"><i class="fas fa-building"></i> Trinesis Technologies Pvt. Ltd. | Pune</div>
-                    <ul style="color:var(--text2);font-size:0.85rem;padding-left:1.2rem">
-                        <li>Managing 6 concurrent US-client projects across AWS, GCP, and Azure</li>
-                        <li>Architected FedRAMP-compliant infrastructure with 9,000+ lines of Terraform</li>
-                        <li>Deployed 45+ microservices on ECS Fargate, Cloud Run, and AKS</li>
-                        <li>Built 50+ CI/CD pipelines &mdash; >98% deploy success rate</li>
-                        <li>Achieved 40% cloud cost optimization through Fargate and right-sizing</li>
-                        <li>Employee of the Month &mdash; February 2025</li>
-                    </ul>
-                    <div class="timeline-tags"><span>AWS</span><span>GCP</span><span>Azure</span><span>Terraform</span><span>Docker</span><span>Kubernetes</span><span>Jenkins</span><span>Prometheus</span></div>
-                </div>
-            </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <div class="timeline-header"><h3>Production Engineer</h3><span class="timeline-date">Apr 2021 - Jan 2022</span></div>
-                    <div class="timeline-company"><i class="fas fa-building"></i> AutoGen India Pvt Ltd | Pune</div>
-                    <ul style="color:var(--text2);font-size:0.85rem;padding-left:1.2rem"><li>Led 6-member team &mdash; 15% efficiency increase through root cause analysis</li></ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+      <div class="section-header">
+        <span class="section-badge">Portfolio</span>
+        <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+        <p class="section-sub">Production infrastructure I've built and open-sourced</p>
+      </div>
 
-<!-- Projects -->
-<section id="projects" style="background:var(--bg2)">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="aws">AWS</button>
+        <button class="filter-btn" data-filter="gcp">GCP</button>
+        <button class="filter-btn" data-filter="azure">Azure</button>
+        <button class="filter-btn" data-filter="cicd">CI/CD</button>
+        <button class="filter-btn" data-filter="ai">AI</button>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="project-card reveal" data-cat="aws">
+          <div class="project-tag tag-aws">AWS</div>
+          <h3>terraform-aws-ecs-microservices</h3>
+          <p>Production-grade AWS ECS Fargate infrastructure with multi-env, auto-scaling, RDS Aurora, and FedRAMP compliance.</p>
+          <div class="project-tech">
+            <span>Terraform</span><span>ECS Fargate</span><span>RDS Aurora</span><span>ALB</span><span>VPC</span>
+          </div>
+          <a href="https://github.com/1998avinashsahu/terraform-aws-ecs-microservices" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card reveal" data-cat="gcp">
+          <div class="project-tag tag-gcp">GCP</div>
+          <h3>terraform-gcp-cloud-run</h3>
+          <p>GCP Cloud Run multi-environment infrastructure with zero-trust IAM auth, Cloud SQL, and Secret Manager.</p>
+          <div class="project-tech">
+            <span>Terraform</span><span>Cloud Run</span><span>Cloud SQL</span><span>IAM</span>
+          </div>
+          <a href="https://github.com/1998avinashsahu/terraform-gcp-cloud-run" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card reveal" data-cat="azure">
+          <div class="project-tag tag-azure">Azure</div>
+          <h3>terraform-azure-aks</h3>
+          <p>Azure AKS Kubernetes infrastructure with Helm, auto-scaling, ACR, Key Vault, and RBAC.</p>
+          <div class="project-tech">
+            <span>Terraform</span><span>AKS</span><span>Helm</span><span>Key Vault</span><span>ACR</span>
+          </div>
+          <a href="https://github.com/1998avinashsahu/terraform-azure-aks" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card reveal" data-cat="cicd">
+          <div class="project-tag tag-cicd">CI/CD</div>
+          <h3>jenkins-cicd-pipelines</h3>
+          <p>Production Jenkins pipeline patterns &mdash; Multibranch, Seed Jobs, Quality Gates, Docker &amp; Terraform integration.</p>
+          <div class="project-tech">
+            <span>Jenkins</span><span>Groovy</span><span>Docker</span><span>Terraform</span>
+          </div>
+          <a href="https://github.com/1998avinashsahu/jenkins-cicd-pipelines" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card reveal" data-cat="cicd">
+          <div class="project-tag tag-cicd">GitOps</div>
+          <h3>gitops-argocd-kubernetes</h3>
+          <p>GitOps with ArgoCD &mdash; App-of-Apps pattern, Kustomize overlays, automated sync &amp; rollback.</p>
+          <div class="project-tech">
+            <span>ArgoCD</span><span>Kubernetes</span><span>Kustomize</span><span>Helm</span>
+          </div>
+          <a href="https://github.com/1998avinashsahu/gitops-argocd-kubernetes" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card reveal" data-cat="aws">
+          <div class="project-tag tag-aws">Serverless</div>
+          <h3>aws-lambda-automation</h3>
+          <p>Lambda suite &mdash; ECR cleanup, EBS snapshots, cost reports, and security audit automation.</p>
+          <div class="project-tech">
+            <span>Lambda</span><span>Python</span><span>EventBridge</span><span>SNS</span>
+          </div>
+          <a href="https://github.com/1998avinashsahu/aws-lambda-automation" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card reveal" data-cat="ai">
+          <div class="project-tag tag-ai">AI</div>
+          <h3>ai-devops-agent</h3>
+          <p>AI-powered DevOps agent using Claude API &mdash; infra audit, cost optimization, log analysis, Terraform review.</p>
+          <div class="project-tech">
+            <span>Python</span><span>Claude API</span><span>AI Agents</span><span>DevOps</span>
+          </div>
+          <a href="https://github.com/1998avinashsahu/ai-devops-agent" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card reveal" data-cat="aws">
+          <div class="project-tag tag-aws">Containers</div>
+          <h3>docker-compose-microservices</h3>
+          <p>Production-ready multi-service stack &mdash; Nginx, FastAPI, PostgreSQL, Redis, InfluxDB with health checks.</p>
+          <div class="project-tech">
+            <span>Docker Compose</span><span>FastAPI</span><span>Nginx</span><span>PostgreSQL</span>
+          </div>
+          <a href="https://github.com/1998avinashsahu/docker-compose-microservices" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+
+      <div class="projects-more">
+        <a href="https://github.com/1998avinashsahu?tab=repositories" target="_blank" class="btn btn-outline">
+          <i class="fab fa-github"></i> View All 20+ Repositories
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section class="section section-alt" id="experience">
     <div class="container">
-        <div class="section-header"><span class="section-badge">Portfolio</span><h2 class="section-title">Featured <span>Projects</span></h2><p class="section-subtitle">Production infrastructure and open-source work</p></div>
-        <div class="projects-filter">
-            <button class="filter-btn active" onclick="filterProjects('all')">All</button>
-            <button class="filter-btn" onclick="filterProjects('aws')">AWS</button>
-            <button class="filter-btn" onclick="filterProjects('gcp')">GCP</button>
-            <button class="filter-btn" onclick="filterProjects('azure')">Azure</button>
-            <button class="filter-btn" onclick="filterProjects('ai')">AI</button>
+      <div class="section-header">
+        <span class="section-badge">Career</span>
+        <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot active"></div>
+          <div class="timeline-card">
+            <div class="timeline-top">
+              <div>
+                <h3>Sr. DevOps & Cloud Engineer</h3>
+                <p class="timeline-company">Trinesis Technologies</p>
+              </div>
+              <span class="timeline-date">2022 &mdash; Present</span>
+            </div>
+            <ul>
+              <li>Managing 6 concurrent projects across AWS, GCP, and Azure for US-based clients</li>
+              <li>Deployed 45+ microservices with 50+ CI/CD pipelines using Jenkins, GitHub Actions, CodeDeploy</li>
+              <li>Wrote 9,000+ lines of production Terraform for multi-cloud infrastructure</li>
+              <li>Implemented FedRAMP/FIPS compliance with zero violations across 30+ services</li>
+              <li>Achieved 40% cloud cost optimization through right-sizing and serverless adoption</li>
+              <li>Built AI-powered DevOps agent for automated infra audit and Terraform review</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>AWS</span><span>GCP</span><span>Azure</span><span>Terraform</span><span>Kubernetes</span><span>Jenkins</span><span>FedRAMP</span>
+            </div>
+          </div>
         </div>
-        <div class="projects-grid" id="projectsGrid">
-            <div class="project-card reveal" data-category="aws">
-                <img src="assets/proj-fedramp.png" alt="FedRAMP" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-aws">AWS | FedRAMP</span>
-                    <h3>Federal Records Management System</h3>
-                    <p>FedRAMP-compliant infrastructure for a US government agency. 30+ microservices on ECS Fargate with FIPS 140-3, KMS encryption, and SSL/TLS enforcement.</p>
-                    <div class="project-tech"><span>Terraform</span><span>ECS Fargate</span><span>RDS Aurora</span><span>Lambda</span><span>Jenkins</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/terraform-aws-ecs-microservices" target="_blank"><i class="fab fa-github"></i> View Architecture <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-            <div class="project-card reveal" data-category="gcp">
-                <img src="assets/proj-auction.png" alt="Auction" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-gcp">GCP | Serverless</span>
-                    <h3>US Auction Platform - Multi-Env Infrastructure</h3>
-                    <p>5-environment GCP infrastructure with Cloud Run, zero-downtime PostgreSQL upgrade, IAM zero-trust auth, and pglogical replication for DR.</p>
-                    <div class="project-tech"><span>Terraform</span><span>Cloud Run</span><span>Cloud SQL</span><span>Jenkins</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/terraform-gcp-cloud-run" target="_blank"><i class="fab fa-github"></i> View Architecture <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-            <div class="project-card reveal" data-category="azure">
-                <img src="assets/proj-azure.png" alt="Azure" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-azure">Azure | Kubernetes</span>
-                    <h3>US Enterprise Platform - Azure AKS</h3>
-                    <p>AKS with Terraform, Helm chart deployments, ACR integration, Key Vault, RBAC, and CI/CD with Jenkins and GitHub Actions.</p>
-                    <div class="project-tech"><span>AKS</span><span>Terraform</span><span>Helm</span><span>ACR</span><span>Azure DevOps</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/terraform-azure-aks" target="_blank"><i class="fab fa-github"></i> View Architecture <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-            <div class="project-card reveal" data-category="gcp">
-                <img src="assets/proj-manufacturing.png" alt="Manufacturing" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-multi">GCP | ML/IoT</span>
-                    <h3>AI-Powered Manufacturing Analytics</h3>
-                    <p>590 commits as top contributor. DevOps for 15+ microservice ML platform with multi-database architecture and edge computing.</p>
-                    <div class="project-tech"><span>GCP</span><span>Jenkins</span><span>Docker</span><span>PostgreSQL</span><span>InfluxDB</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/docker-compose-microservices" target="_blank"><i class="fab fa-github"></i> View Stack <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-            <div class="project-card reveal" data-category="ai">
-                <img src="assets/proj-ai.png" alt="AI Agent" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-ai">AI | Python</span>
-                    <h3>AI DevOps Agent</h3>
-                    <p>AI-powered infrastructure automation using Claude API. Scans AWS security, reviews Terraform, optimizes costs, and analyzes logs via natural language.</p>
-                    <div class="project-tech"><span>Python</span><span>Claude API</span><span>boto3</span><span>Terraform</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/ai-devops-agent" target="_blank"><i class="fab fa-github"></i> View Code <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-            <div class="project-card reveal" data-category="all">
-                <img src="assets/proj-gitops.png" alt="GitOps" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-multi">GitOps | ArgoCD</span>
-                    <h3>GitOps with ArgoCD & Kubernetes</h3>
-                    <p>Production GitOps with ArgoCD app-of-apps pattern, Kustomize overlays for multi-env, auto-sync with self-heal, and Slack notifications.</p>
-                    <div class="project-tech"><span>ArgoCD</span><span>Kubernetes</span><span>Kustomize</span><span>Helm</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/gitops-argocd-kubernetes" target="_blank"><i class="fab fa-github"></i> View Code <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
 
-            <!-- Enterprise ERP Platform -->
-            <div class="project-card reveal" data-category="aws">
-                <img src="assets/proj-erp.png" alt="ERP" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-aws">AWS | CI/CD</span>
-                    <h3>Enterprise ERP Platform (US Client)</h3>
-                    <p>Production CI/CD with AWS CodeBuild/CodeDeploy. Led security hardening — removed credentials from Docker images, integrated Secrets Manager, SSL/TLS automation with Let's Encrypt.</p>
-                    <div class="project-tech"><span>AWS</span><span>CodeBuild</span><span>CodeDeploy</span><span>ECR</span><span>Secrets Manager</span><span>Nginx</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/aws-codedeploy-cicd" target="_blank"><i class="fab fa-github"></i> View Pipeline <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-top">
+              <div>
+                <h3>DevOps Engineer</h3>
+                <p class="timeline-company">Previous Role</p>
+              </div>
+              <span class="timeline-date">2021 &mdash; 2022</span>
             </div>
-
-            <!-- US Media Platform -->
-            <div class="project-card reveal" data-category="aws">
-                <img src="assets/proj-media.png" alt="Media" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-aws">AWS | Monitoring</span>
-                    <h3>US Media & Broadcasting Platform</h3>
-                    <p>CI/CD pipeline with GitLab + Jenkins + CodeDeploy. Optimized Docker/Nginx/uWSGI for 45% performance gain and 25% latency reduction. Prometheus + Grafana monitoring dashboards.</p>
-                    <div class="project-tech"><span>AWS</span><span>Terraform</span><span>Jenkins</span><span>GitLab</span><span>Prometheus</span><span>Grafana</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/monitoring-stack" target="_blank"><i class="fab fa-github"></i> View Stack <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
+            <ul>
+              <li>Built and maintained CI/CD pipelines for containerized applications</li>
+              <li>Managed Docker and Kubernetes deployments in production environments</li>
+              <li>Implemented monitoring and alerting with Prometheus, Grafana, and CloudWatch</li>
+              <li>Automated infrastructure provisioning with Terraform and Ansible</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>Docker</span><span>Kubernetes</span><span>Terraform</span><span>Ansible</span><span>Prometheus</span>
             </div>
-
-            <!-- AWS Lambda Automation -->
-            <div class="project-card reveal" data-category="aws">
-                <img src="assets/proj-lambda.png" alt="Lambda" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-aws">AWS | Serverless</span>
-                    <h3>AWS Lambda Automation Suite</h3>
-                    <p>5 Lambda functions for infrastructure automation — ECR cleanup, EBS snapshots, weekly cost reports to Slack, security audit, and RDS backup. Deployed with Terraform + EventBridge cron.</p>
-                    <div class="project-tech"><span>Lambda</span><span>Terraform</span><span>EventBridge</span><span>Python</span><span>Cost Explorer</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/aws-lambda-automation" target="_blank"><i class="fab fa-github"></i> View Code <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-
-            <!-- Terraform Modules -->
-            <div class="project-card reveal" data-category="aws">
-                <img src="assets/proj-modules.png" alt="Modules" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-multi">IaC | Reusable</span>
-                    <h3>Terraform Reusable Modules Library</h3>
-                    <p>Production-tested reusable Terraform modules — VPC, ECS Service, RDS Aurora, S3 Secure, Security Groups. Each with input validation, defaults, and examples.</p>
-                    <div class="project-tech"><span>Terraform</span><span>AWS</span><span>VPC</span><span>ECS</span><span>RDS</span><span>S3</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/terraform-modules-library" target="_blank"><i class="fab fa-github"></i> View Modules <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-
-            <!-- Jenkins Pipelines -->
-            <div class="project-card reveal" data-category="all">
-                <img src="assets/proj-jenkins.png" alt="Jenkins" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-multi">CI/CD | Jenkins</span>
-                    <h3>Jenkins CI/CD Pipeline Collection</h3>
-                    <p>Battle-tested Jenkins patterns — Multibranch pipelines, Seed Jobs (Job DSL), 5-stage quality gates (Lint, OWASP, SonarQube, Build, Deploy), shared libraries.</p>
-                    <div class="project-tech"><span>Jenkins</span><span>Groovy</span><span>Docker</span><span>SonarQube</span><span>OWASP</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/jenkins-cicd-pipelines" target="_blank"><i class="fab fa-github"></i> View Pipelines <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-
-            <!-- Docker Compose -->
-            <div class="project-card reveal" data-category="all">
-                <img src="assets/proj-docker.png" alt="Docker" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-multi">Containers | Stack</span>
-                    <h3>Docker Compose Microservices Stack</h3>
-                    <p>Production-ready multi-service stack with Nginx reverse proxy, FastAPI backends, PostgreSQL (multi-DB), Redis, InfluxDB. Health checks, named volumes, hardened ports.</p>
-                    <div class="project-tech"><span>Docker</span><span>Nginx</span><span>FastAPI</span><span>PostgreSQL</span><span>Redis</span><span>InfluxDB</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/docker-compose-microservices" target="_blank"><i class="fab fa-github"></i> View Stack <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-
-            <!-- Kubernetes Manifests -->
-            <div class="project-card reveal" data-category="all">
-                <img src="assets/proj-k8s.png" alt="K8s" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-multi">K8s | Production</span>
-                    <h3>Kubernetes Manifests Collection</h3>
-                    <p>Production-ready K8s manifests — Deployments with anti-affinity, HPA, PDB, NetworkPolicies, RBAC, ServiceMonitors, CronJobs. Namespaces with ResourceQuota and LimitRange.</p>
-                    <div class="project-tech"><span>Kubernetes</span><span>HPA</span><span>RBAC</span><span>NetworkPolicy</span><span>Prometheus</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/kubernetes-manifests" target="_blank"><i class="fab fa-github"></i> View Manifests <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-
-            <!-- Security Hardening -->
-            <div class="project-card reveal" data-category="all">
-                <img src="assets/proj-security.png" alt="Security" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag" style="background:rgba(239,68,68,0.15);color:var(--red)">Security | Playbook</span>
-                    <h3>DevOps Security Hardening Playbook</h3>
-                    <p>Practical security patterns — Docker credential removal, Secrets Manager integration (AWS/GCP), network port hardening, SSL automation, Terraform security, FIPS checklist.</p>
-                    <div class="project-tech"><span>Docker</span><span>SSL/TLS</span><span>Secrets Manager</span><span>Terraform</span><span>FIPS</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/devops-security-hardening" target="_blank"><i class="fab fa-github"></i> View Playbook <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-
-            <!-- Monitoring Stack -->
-            <div class="project-card reveal" data-category="all">
-                <img src="assets/proj-monitoring.png" alt="Monitoring" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag" style="background:rgba(244,104,0,0.15);color:#f46800">Monitoring | Observability</span>
-                    <h3>Prometheus + Grafana Monitoring Stack</h3>
-                    <p>One-command monitoring setup — Prometheus, Grafana with pre-built dashboards, Alertmanager with Slack/email, Node Exporter, cAdvisor. All Docker Compose.</p>
-                    <div class="project-tech"><span>Prometheus</span><span>Grafana</span><span>Alertmanager</span><span>Docker</span><span>cAdvisor</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/monitoring-stack" target="_blank"><i class="fab fa-github"></i> View Stack <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-
-            <!-- Infrastructure Monitoring Alerts -->
-            <div class="project-card reveal" data-category="aws">
-                <img src="assets/proj-monitoring-alerts.png" alt="Alerts" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-aws">AWS | Alerting</span>
-                    <h3>Infrastructure Monitoring & Alerts (Terraform)</h3>
-                    <p>Terraform modules for CloudWatch alarms — ECS CPU/Memory, RDS storage/connections, ALB 5xx/latency, Lambda errors, and billing threshold alerts with SNS notifications.</p>
-                    <div class="project-tech"><span>Terraform</span><span>CloudWatch</span><span>SNS</span><span>ECS</span><span>RDS</span><span>ALB</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/infrastructure-monitoring-alerts" target="_blank"><i class="fab fa-github"></i> View Modules <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-
-            <!-- GitHub Actions -->
-            <div class="project-card reveal" data-category="all">
-                <img src="assets/proj-ghactions.png" alt="GitHub Actions" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-multi">CI/CD | GitHub</span>
-                    <h3>GitHub Actions Reusable Workflows</h3>
-                    <p>Production reusable workflows — Docker build & deploy, Terraform CI with TFLint, PR checks with Trivy security scan, semantic release. Composite actions for DRY pipelines.</p>
-                    <div class="project-tech"><span>GitHub Actions</span><span>Docker</span><span>Terraform</span><span>Trivy</span><span>YAML</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/github-actions-workflows" target="_blank"><i class="fab fa-github"></i> View Workflows <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-
-            <!-- Ansible Playbooks -->
-            <div class="project-card reveal" data-category="all">
-                <img src="assets/proj-ansible.png" alt="Ansible" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag" style="background:rgba(238,0,0,0.15);color:#ee0000">Config Mgmt | Ansible</span>
-                    <h3>Ansible Playbooks & Roles</h3>
-                    <p>Production Ansible roles — Docker install, Nginx reverse proxy with SSL, server hardening (SSH, UFW, fail2ban), Prometheus node-exporter setup. Full inventory management.</p>
-                    <div class="project-tech"><span>Ansible</span><span>Docker</span><span>Nginx</span><span>UFW</span><span>fail2ban</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/ansible-playbooks" target="_blank"><i class="fab fa-github"></i> View Roles <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-
-            <!-- Shell Scripts -->
-            <div class="project-card reveal" data-category="aws">
-                <img src="assets/proj-scripts.png" alt="Scripts" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag tag-multi">DevOps | Bash</span>
-                    <h3>Shell Scripts Toolkit</h3>
-                    <p>Battle-tested DevOps scripts — AWS ECR cleanup, S3 backup sync, ECS service status, Docker cleanup, system health monitor, PostgreSQL backup with retention, SSL cert expiry checker.</p>
-                    <div class="project-tech"><span>Bash</span><span>AWS CLI</span><span>Docker</span><span>PostgreSQL</span><span>OpenSSL</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/shell-scripts-toolkit" target="_blank"><i class="fab fa-github"></i> View Scripts <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-
-            <!-- CI/CD Notifications Bot -->
-            <div class="project-card reveal" data-category="ai">
-                <img src="assets/proj-notifications.png" alt="Notifications" class="project-img">
-                <div class="project-content">
-                    <span class="project-tag" style="background:rgba(6,182,212,0.15);color:var(--cyan)">Automation | Python</span>
-                    <h3>CI/CD Notifications Bot</h3>
-                    <p>Python Slack bot for rich deployment notifications with build context, commit info, environment tracking, and one-click rollback buttons. Webhook receiver for Jenkins/GitHub/CodeDeploy.</p>
-                    <div class="project-tech"><span>Python</span><span>Slack API</span><span>Jenkins</span><span>Webhooks</span><span>Docker</span></div>
-                    <div class="project-links"><a href="https://github.com/1998avinashsahu/ci-cd-notifications-bot" target="_blank"><i class="fab fa-github"></i> View Bot <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a></div>
-                </div>
-            </div>
-
+          </div>
         </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot cert"></div>
+          <div class="timeline-card">
+            <div class="timeline-top">
+              <div>
+                <h3>Certifications & Training</h3>
+                <p class="timeline-company">Continuous Learning &mdash; 2026</p>
+              </div>
+              <span class="timeline-date">2026</span>
+            </div>
+            <ul>
+              <li>Anthropic Academy &mdash; AI Fluency: Framework & Foundations</li>
+              <li>Anthropic Academy &mdash; Building with the Claude API</li>
+              <li>Google AI Essentials Certificate</li>
+              <li>Microsoft + LinkedIn &mdash; Generative AI Essentials</li>
+              <li>Preparing for AWS Solutions Architect Associate</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>AI Fluency</span><span>Claude API</span><span>Prompt Engineering</span><span>AWS SAA</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Certifications -->
-<section>
+  <!-- ===== CONTACT ===== -->
+  <section class="section" id="contact">
     <div class="container">
-        <div class="section-header"><span class="section-badge">Recognition</span><h2 class="section-title">Achievements & <span>Certifications</span></h2></div>
-        <div class="cert-grid reveal">
-            <div class="cert-card"><div class="cert-icon" style="background:rgba(251,191,36,0.1);color:var(--gold)"><i class="fas fa-trophy"></i></div><div><h4 style="font-size:0.9rem">Employee of the Month</h4><p style="font-size:0.8rem;color:var(--text3)">Feb 2025 &mdash; Trinesis Technologies</p></div></div>
-            <div class="cert-card"><div class="cert-icon" style="background:rgba(249,165,27,0.1);color:#f9a51b"><i class="fab fa-aws"></i></div><div><h4 style="font-size:0.9rem">AWS Solutions Architect</h4><p style="font-size:0.8rem;color:var(--text3)">Associate &mdash; In Progress</p></div></div>
-            <div class="cert-card"><div class="cert-icon" style="background:rgba(34,197,94,0.1);color:var(--green)"><i class="fas fa-shield-alt"></i></div><div><h4 style="font-size:0.9rem">FedRAMP/FIPS Compliance</h4><p style="font-size:0.8rem;color:var(--text3)">Zero violations &mdash; US Govt</p></div></div>
-            <div class="cert-card"><div class="cert-icon" style="background:rgba(59,130,246,0.1);color:var(--accent)"><i class="fab fa-python"></i></div><div><h4 style="font-size:0.9rem">Python Full Stack</h4><p style="font-size:0.8rem;color:var(--text3)">Texcode Solutions &mdash; 2022</p></div></div>
-        </div>
+      <div class="section-header">
+        <span class="section-badge">Get in Touch</span>
+        <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+        <p class="section-sub">Open to DevOps, Cloud Engineering, and AI-related opportunities</p>
+      </div>
+      <div class="contact-grid">
+        <a href="mailto:avinashsahu7415@gmail.com" class="contact-card reveal">
+          <i class="fas fa-envelope"></i>
+          <h4>Email</h4>
+          <p>avinashsahu7415@gmail.com</p>
+        </a>
+        <a href="https://www.linkedin.com/in/avinash-sahu-0ba434181/" target="_blank" class="contact-card reveal">
+          <i class="fab fa-linkedin"></i>
+          <h4>LinkedIn</h4>
+          <p>Connect with me</p>
+        </a>
+        <a href="https://github.com/1998avinashsahu" target="_blank" class="contact-card reveal">
+          <i class="fab fa-github"></i>
+          <h4>GitHub</h4>
+          <p>1998avinashsahu</p>
+        </a>
+        <a href="https://1998avinashsahu.github.io/portfolio/" target="_blank" class="contact-card reveal">
+          <i class="fas fa-globe"></i>
+          <h4>Portfolio</h4>
+          <p>1998avinashsahu.github.io</p>
+        </a>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Contact -->
-<section id="contact" style="background:var(--bg2)">
-    <div class="container">
-        <div class="section-header"><span class="section-badge">Get In Touch</span><h2 class="section-title">Let's <span>Connect</span></h2><p class="section-subtitle">Open to opportunities, collaborations, and conversations</p></div>
-        <div class="contact-grid reveal">
-            <a href="mailto:avinashsahu7415@gmail.com" class="contact-card"><i class="fas fa-envelope" style="color:var(--red)"></i><h4>Email</h4><p>avinashsahu7415@gmail.com</p></a>
-            <a href="https://www.linkedin.com/in/avinash-sahu-0ba434181/" target="_blank" class="contact-card"><i class="fab fa-linkedin" style="color:#0077b5"></i><h4>LinkedIn</h4><p>Let's connect</p></a>
-            <a href="https://github.com/1998avinashsahu" target="_blank" class="contact-card"><i class="fab fa-github" style="color:var(--text)"></i><h4>GitHub</h4><p>19 repositories</p></a>
-            <a href="tel:+919922436794" class="contact-card"><i class="fas fa-phone" style="color:var(--green)"></i><h4>Phone</h4><p>+91 9922436794</p></a>
-        </div>
-    </div>
-</section>
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>&copy; 2026 Avinash Sahu &mdash; Built with passion. Deployed with CI/CD.</p>
+  </footer>
 
-<footer class="footer"><p>Designed & Built by <a href="https://github.com/1998avinashsahu">Avinash Sahu</a> &mdash; 2025</p></footer>
-
-<script>
-// Particle Background
-const canvas=document.getElementById('particles');const ctx=canvas.getContext('2d');
-canvas.width=window.innerWidth;canvas.height=window.innerHeight;
-const particles=[];const particleCount=80;
-class Particle{constructor(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.size=Math.random()*2+0.5;this.speedX=Math.random()*0.5-0.25;this.speedY=Math.random()*0.5-0.25;this.opacity=Math.random()*0.5+0.1}
-update(){this.x+=this.speedX;this.y+=this.speedY;if(this.x>canvas.width)this.x=0;if(this.x<0)this.x=canvas.width;if(this.y>canvas.height)this.y=0;if(this.y<0)this.y=canvas.height}
-draw(){ctx.fillStyle=`rgba(59,130,246,${this.opacity})`;ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill()}}
-for(let i=0;i<particleCount;i++)particles.push(new Particle());
-function connectParticles(){for(let a=0;a<particles.length;a++){for(let b=a;b<particles.length;b++){const dx=particles[a].x-particles[b].x;const dy=particles[a].y-particles[b].y;const dist=Math.sqrt(dx*dx+dy*dy);if(dist<150){ctx.strokeStyle=`rgba(59,130,246,${0.1*(1-dist/150)})`;ctx.lineWidth=0.5;ctx.beginPath();ctx.moveTo(particles[a].x,particles[a].y);ctx.lineTo(particles[b].x,particles[b].y);ctx.stroke()}}}}
-function animateParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});connectParticles();requestAnimationFrame(animateParticles)}
-animateParticles();
-window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight});
-
-// Counter Animation
-function animateCounters(){document.querySelectorAll('.counter').forEach(counter=>{const target=+counter.getAttribute('data-target');const duration=2000;const step=target/duration*16;let current=0;const timer=setInterval(()=>{current+=step;if(current>=target){counter.textContent=target.toLocaleString();clearInterval(timer)}else{counter.textContent=Math.floor(current).toLocaleString()}},16)})}
-
-// Scroll Animations
-const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');if(entry.target.querySelector('.counter')){animateCounters()}}})},{threshold:0.1});
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
-
-// Nav scroll effect
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
-
-// Project Filter
-function filterProjects(cat){
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-    event.target.classList.add('active');
-    document.querySelectorAll('.project-card').forEach(card=>{
-        if(cat==='all'||card.dataset.category===cat||card.dataset.category==='all'){card.style.display='block';setTimeout(()=>card.style.opacity='1',10)}
-        else{card.style.opacity='0';setTimeout(()=>card.style.display='none',300)}
-    });
-}
-
-// Close mobile nav
-document.querySelectorAll('.nav-links a').forEach(l=>l.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('active')));
-
-// Typing effect for hero
-const heroTitle=document.querySelector('.hero h1');
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
