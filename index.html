@@ -21,6 +21,7 @@
         <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#linkedin" class="nav-link">LinkedIn</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
         <li>
           <a href="https://www.linkedin.com/in/avinash-sahu-0ba434181/" target="_blank" class="btn btn-sm btn-linkedin">
@@ -387,6 +388,111 @@
       </div>
     </div>
   </section>
+
+  <!-- ===== LINKEDIN ACTIVITY ===== -->
+  <section class="section" id="linkedin">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Stay Updated</span>
+        <h2 class="section-title">LinkedIn <span class="gradient-text">Activity</span></h2>
+        <p class="section-sub">Latest posts, articles, and professional updates</p>
+      </div>
+      <div class="linkedin-grid">
+
+        <div class="linkedin-post reveal">
+          <div class="linkedin-post-header">
+            <div class="linkedin-avatar"><i class="fab fa-linkedin-in"></i></div>
+            <div>
+              <h4>Avinash Sahu</h4>
+              <p>Sr. DevOps & Cloud Engineer</p>
+            </div>
+            <span class="linkedin-time">Recent</span>
+          </div>
+          <div class="linkedin-post-body">
+            <h3>Building AI-Powered DevOps Agents with Claude API</h3>
+            <p>Excited to share my latest project — an AI DevOps agent that can audit infrastructure, analyze logs, optimize costs, and review Terraform code using natural language. The future of DevOps is intelligent automation.</p>
+            <div class="linkedin-tags"><span>#AI</span><span>#DevOps</span><span>#ClaudeAPI</span><span>#Automation</span></div>
+          </div>
+          <a href="https://www.linkedin.com/in/avinash-sahu-0ba434181/recent-activity/all/" target="_blank" class="linkedin-post-link">Read on LinkedIn <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="linkedin-post reveal">
+          <div class="linkedin-post-header">
+            <div class="linkedin-avatar"><i class="fab fa-linkedin-in"></i></div>
+            <div>
+              <h4>Avinash Sahu</h4>
+              <p>Sr. DevOps & Cloud Engineer</p>
+            </div>
+            <span class="linkedin-time">Recent</span>
+          </div>
+          <div class="linkedin-post-body">
+            <h3>Achieving FedRAMP Compliance on AWS — Lessons Learned</h3>
+            <p>After months of hardening infrastructure for a US government client — zero compliance violations across 30+ microservices. Here are the key patterns I used: FIPS 140-3 encryption, KMS key management, and zero-trust IAM architecture.</p>
+            <div class="linkedin-tags"><span>#AWS</span><span>#FedRAMP</span><span>#Security</span><span>#CloudEngineering</span></div>
+          </div>
+          <a href="https://www.linkedin.com/in/avinash-sahu-0ba434181/recent-activity/all/" target="_blank" class="linkedin-post-link">Read on LinkedIn <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="linkedin-post reveal">
+          <div class="linkedin-post-header">
+            <div class="linkedin-avatar"><i class="fab fa-linkedin-in"></i></div>
+            <div>
+              <h4>Avinash Sahu</h4>
+              <p>Sr. DevOps & Cloud Engineer</p>
+            </div>
+            <span class="linkedin-time">Recent</span>
+          </div>
+          <div class="linkedin-post-body">
+            <h3>How I Reduced Cloud Costs by 40% Using Terraform & Serverless</h3>
+            <p>Cloud bills getting out of hand? Here's my playbook: right-sizing ECS tasks, converting batch jobs to Lambda, implementing S3 lifecycle policies, and using spot instances for non-critical workloads.</p>
+            <div class="linkedin-tags"><span>#CloudOptimization</span><span>#Terraform</span><span>#Serverless</span><span>#AWS</span></div>
+          </div>
+          <a href="https://www.linkedin.com/in/avinash-sahu-0ba434181/recent-activity/all/" target="_blank" class="linkedin-post-link">Read on LinkedIn <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+      <div class="linkedin-cta">
+        <a href="https://www.linkedin.com/in/avinash-sahu-0ba434181/" target="_blank" class="btn btn-linkedin"><i class="fab fa-linkedin-in"></i> Follow me on LinkedIn</a>
+        <a href="https://www.linkedin.com/in/avinash-sahu-0ba434181/recent-activity/all/" target="_blank" class="btn btn-outline"><i class="fas fa-newspaper"></i> View All Posts</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AI CHATBOT ===== -->
+  <div class="chatbot-fab" id="chatbotFab" aria-label="Chat with AI assistant">
+    <i class="fas fa-robot"></i>
+    <span class="fab-pulse"></span>
+  </div>
+
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+      <div class="chatbot-header-info">
+        <div class="chatbot-avatar"><i class="fas fa-robot"></i></div>
+        <div>
+          <h4>Avinash's AI Assistant</h4>
+          <span class="chatbot-status"><span class="status-dot"></span> Online</span>
+        </div>
+      </div>
+      <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="chat-msg bot">
+        <div class="chat-bubble">Hey! I'm Avinash's AI assistant. Ask me anything about his skills, experience, projects, or how he can help your team. Try:</div>
+      </div>
+      <div class="chat-suggestions" id="chatSuggestions">
+        <button class="suggestion-btn" data-q="What are his skills?">Skills</button>
+        <button class="suggestion-btn" data-q="Tell me about his experience">Experience</button>
+        <button class="suggestion-btn" data-q="Show me his projects">Projects</button>
+        <button class="suggestion-btn" data-q="What certifications does he have?">Certifications</button>
+        <button class="suggestion-btn" data-q="Why should I hire him?">Why hire?</button>
+        <button class="suggestion-btn" data-q="How to contact him?">Contact</button>
+      </div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatInput" placeholder="Ask about Avinash's capabilities..." autocomplete="off" />
+      <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
 
   <!-- ===== CONTACT ===== -->
   <section class="section" id="contact">
