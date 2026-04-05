@@ -155,9 +155,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // Toggle chatbot window
   chatFab.addEventListener('click', () => {
     chatWindow.classList.toggle('open');
-    if (chatWindow.classList.contains('open')) chatInput.focus();
+    if (chatWindow.classList.contains('open')) {
+      chatInput.focus();
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
   });
   chatClose.addEventListener('click', () => chatWindow.classList.remove('open'));
+
+  // Close chatbot when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!chatWindow.contains(e.target) && !chatFab.contains(e.target)) {
+      chatWindow.classList.remove('open');
+    }
+  });
 
   // Suggestion buttons
   document.querySelectorAll('.suggestion-btn').forEach(btn => {
