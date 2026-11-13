@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     name: "Avinash Sahu",
     title: "Microsoft 365, Cloud, Network & DevOps Engineer",
     company: "Trinesis Technologies",
-    experience: "Almost 4 years",
+    experience: "3+ years",
     email: "avinashsahu7415@gmail.com",
     linkedin: "https://www.linkedin.com/in/avinash-sahu-0ba434181/",
     github: "https://github.com/1998avinashsahu",
