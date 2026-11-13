@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function animateCounter(el) {
     const target = parseInt(el.getAttribute('data-target'));
+    const suffix = el.getAttribute('data-suffix') || '';
     const duration = 2000;
     const start = performance.now();
 
@@ -83,9 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-      el.textContent = Math.floor(eased * target).toLocaleString();
+      el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
       if (progress < 1) requestAnimationFrame(update);
-      else el.textContent = target.toLocaleString();
+      else el.textContent = target.toLocaleString() + suffix;
     }
     requestAnimationFrame(update);
   }
@@ -457,3 +458,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+
+// --- Scroll progress bar + sticky mobile CTA ---
+(function () {
+  var bar = document.getElementById('scrollProgress');
+  var cta = document.getElementById('stickyCta');
+  function onScroll() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    if (bar && max > 0) bar.style.width = (h.scrollTop / max * 100) + '%';
+    if (cta) {
+      var contact = document.getElementById('contact');
+      var nearContact = contact && contact.getBoundingClientRect().top < window.innerHeight * 0.8;
+      cta.classList.toggle('show', h.scrollTop > 500 && !nearContact);
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
