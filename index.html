@@ -759,7 +759,7 @@
   </section>
 
   <!-- ===== AI CHATBOT ===== -->
-  <div class="chatbot-fab" id="chatbotFab" aria-label="Chat with AI assistant">
+  <div class="chatbot-fab" id="chatbotFab" role="button" tabindex="0" aria-label="Open chat: ask about Avinash's services">
     <i class="fas fa-robot"></i>
     <span class="fab-pulse"></span>
   </div>
@@ -769,27 +769,27 @@
       <div class="chatbot-header-info">
         <div class="chatbot-avatar"><i class="fas fa-robot"></i></div>
         <div>
-          <h4>Avinash's AI Assistant</h4>
-          <span class="chatbot-status"><span class="status-dot"></span> Online</span>
+          <h4>Ask about Avinash</h4>
+          <span class="chatbot-status"><span class="status-dot"></span> Quick answers</span>
         </div>
       </div>
-      <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
+      <button class="chatbot-close" id="chatbotClose" aria-label="Close chat"><i class="fas fa-times"></i></button>
     </div>
     <div class="chatbot-messages" id="chatbotMessages">
       <div class="chat-msg bot">
-        <div class="chat-bubble">Hey! I'm Avinash's AI assistant. Ask me anything about his skills, experience, projects, or how he can help your team. Try:</div>
+        <div class="chat-bubble">Hi! I can answer common questions about Avinash's services, results and how he works. For anything specific, email him and he replies personally. Try:</div>
       </div>
       <div class="chat-suggestions" id="chatSuggestions">
-        <button class="suggestion-btn" data-q="What are his skills?">Skills</button>
-        <button class="suggestion-btn" data-q="Tell me about his experience">Experience</button>
-        <button class="suggestion-btn" data-q="Show me his projects">Projects</button>
-        <button class="suggestion-btn" data-q="What certifications does he have?">Certifications</button>
-        <button class="suggestion-btn" data-q="Why should I hire him?">Why hire?</button>
+        <button class="suggestion-btn" data-q="What services do you offer?">Services</button>
+        <button class="suggestion-btn" data-q="Show me case studies and results">Results</button>
+        <button class="suggestion-btn" data-q="How do you work and keep changes safe?">How he works</button>
+        <button class="suggestion-btn" data-q="Are you available and how do we start?">Availability</button>
+        <button class="suggestion-btn" data-q="How does pricing work?">Pricing</button>
         <button class="suggestion-btn" data-q="How to contact him?">Contact</button>
       </div>
     </div>
     <div class="chatbot-input">
-      <input type="text" id="chatInput" placeholder="Ask about Avinash's capabilities..." autocomplete="off" />
+      <input type="text" id="chatInput" placeholder="Ask about services, results, availability..." aria-label="Type your question" autocomplete="off" />
       <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
     </div>
   </div>

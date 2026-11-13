@@ -293,7 +293,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Greetings
     if (/^(hi|hello|hey|namaste|howdy|sup|yo)\b/.test(q)) {
-      return `Hello! I'm ${KB.name}'s AI assistant. I can tell you about his <b>skills</b>, <b>experience</b>, <b>projects</b>, <b>certifications</b>, or <b>why you should hire him</b>. What would you like to know?`;
+      return `Hello! I answer common questions about ${KB.name}'s <b>services</b>, <b>results</b>, <b>how he works</b>, <b>availability</b> and <b>pricing</b>. What would you like to know?`;
+    }
+
+    // --- Client questions (checked first) ---
+    if (/availab|when can|how soon|get started|how (do|to) (we |i )?start|start a project|onboard|what do you need|capacity/.test(q)) {
+      return `<b>Availability & getting started:</b><br><br>` +
+        `• Avinash is <b>open to new projects</b><br>` +
+        `• Send two or three lines about the problem<br>` +
+        `• He replies with questions or a clear next step<br>` +
+        `• To start he needs: a short description, a contact who can approve changes, and an admin invite<br><br>` +
+        `<a href="mailto:avinashsahu7415@gmail.com?subject=Project%20enquiry%20from%20your%20portfolio" style="color:var(--accent)">Email your request</a>`;
+    }
+    if (/pric(e|ing)|how much|quote|hourly|per hour|budget|rate card|\brates?\b|retainer|fixed[- ]scope|what do you charge/.test(q)) {
+      return `<b>Pricing:</b><br><br>` +
+        `There is no fixed price list because the scope decides the cost. Avinash works in three ways:<br>` +
+        `• <b>Hourly support</b> with a short written summary of work and hours<br>` +
+        `• <b>Fixed-scope project</b> with a quote after a read-only audit<br>` +
+        `• <b>Ongoing care</b> with monthly reports and support<br><br>` +
+        `<a href="mailto:avinashsahu7415@gmail.com?subject=Project%20enquiry%20from%20your%20portfolio" style="color:var(--accent)">Email what you need</a> and he will suggest the best fit.`;
+    }
+    if (/service|offer|what (do|can) you (do|help)|can you help|help (me|us)|what do you do/.test(q)) {
+      return `<b>Services:</b><br><br>` +
+        `• <b>Microsoft 365 administration & security:</b> Exchange Online, Entra ID, licences, MFA, SPF/DKIM/DMARC, phishing clean-up<br>` +
+        `• <b>Intune & endpoint management:</b> Windows and iOS, BitLocker, Autopilot, compliance policies<br>` +
+        `• <b>Cloud & network engineering:</b> VPC/VNet, VPN, NAT, DNS, TLS on AWS, Azure and GCP<br>` +
+        `• <b>DevOps & automation:</b> Terraform, CI/CD pipelines, Docker, Kubernetes, PowerShell<br><br>` +
+        `See details in <a href="#services" style="color:var(--accent)">Services</a>.`;
+    }
+    if (/case stud|results?\b|proof|success|past work|client work|references?|track record/.test(q)) {
+      return `<b>Selected results (client names are private):</b><br><br>` +
+        `• Microsoft 365 tenant: <b>126 changes, 0 incidents, 0 mail lost</b>, 12 licences recovered<br>` +
+        `• Intune: <b>7 devices</b> (Windows and iOS) managed from scratch<br>` +
+        `• Phishing clean-up: <b>12 apps removed, 49 reviewed, 371 audit records checked</b><br>` +
+        `• FedRAMP AWS platform: <b>40% cost cut, 0 compliance violations</b><br>` +
+        `• GCP fintech: <b>zero-downtime</b> PostgreSQL upgrade, <b>30% cost cut</b><br><br>` +
+        `Full write-ups are in <a href="#case-studies" style="color:var(--accent)">Case Studies</a>.`;
+    }
+    if (/how (do|does) (you|he) work|how.*(work|process)|process|workflow|safe|rollback|approval|risk|change control|access to (our|my)|my systems|passwords?/.test(q) && !/skill|tech stack|experience|why/.test(q)) {
+      return `<b>How Avinash works:</b><br><br>` +
+        `1. <b>Read-only audit</b>: he reviews your setup without changing anything<br>` +
+        `2. <b>Written approval</b>: nothing changes without your OK<br>` +
+        `3. <b>Careful changes</b>: dry run first, log after, rollback path for each change<br>` +
+        `4. <b>Evidence & handover</b>: change log, runbooks and short reports with hours<br><br>` +
+        `He uses an admin account you invite, with only the roles needed, never asks for your passwords, and removes his access when the work ends.`;
+    }
+    if (/time ?zone|working hours|overlap|central time|\bcst\b|\best\b|\bpst\b/.test(q)) {
+      return `<b>Time zone:</b><br><br>` +
+        `Avinash works from India and overlaps with <b>US Central morning hours</b> for calls. Most work is done on his own time, with a short written update at the end of each day.`;
     }
 
     // Microsoft 365 / network
@@ -447,14 +494,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Default fallback
-    return `I can help with questions about Avinash's:<br><br>` +
-      `• <b>Skills</b> — cloud, DevOps, AI, languages<br>` +
-      `• <b>Experience</b> — work history, achievements<br>` +
-      `• <b>Projects</b> — open-source repos, what he's built<br>` +
-      `• <b>Certifications</b> — AI, cloud, security<br>` +
-      `• <b>Why hire him</b> — key differentiators<br>` +
-      `• <b>Contact info</b> — email, LinkedIn, GitHub<br><br>` +
-      `Try asking something like <i>"What are his cloud skills?"</i> or <i>"Why should I hire him?"</i>`;
+    return `I'm a quick-answer assistant, so I may not have that one. I can help with:<br><br>` +
+      `• <b>Services</b> and <b>case studies</b><br>` +
+      `• <b>How he works</b> and keeps changes safe<br>` +
+      `• <b>Availability</b>, <b>pricing</b> and <b>time zone</b><br>` +
+      `• <b>Skills</b>, <b>experience</b> and <b>projects</b><br><br>` +
+      `For anything specific, <a href="mailto:avinashsahu7415@gmail.com?subject=Project%20enquiry%20from%20your%20portfolio" style="color:var(--accent)">email Avinash</a> and he replies personally.`;
   }
 
 });
