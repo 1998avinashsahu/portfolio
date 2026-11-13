@@ -64,8 +64,8 @@
         <li><a href="#case-studies" class="nav-link">Case Studies</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#projects" class="nav-link">Code</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="blog/" class="nav-link">Blog</a></li>
         <li><a href="#faq" class="nav-link">FAQ</a></li>
         <li>
           <a href="#contact" class="btn btn-sm btn-primary">
@@ -98,12 +98,11 @@
         <div class="hero-content">
           <div class="hero-badge"><span class="pulse-dot"></span> Available for new projects</div>
           <h1>I Secure &amp; Run Your <span class="gradient-text">Microsoft 365, Cloud &amp; Network.</span></h1>
-          <p class="hero-desc">3+ years of experience for US clients. I set up and fix Exchange Online, Intune and Entra ID, harden email security, and build AWS, Azure and GCP infrastructure. Every change is approved in writing, logged and reversible.</p>
+          <p class="hero-desc">I help small US teams and nonprofits run Microsoft 365 and Intune securely, and I build the AWS, Azure and GCP networks behind bigger platforms. 3+ years of experience. Every change is approved in writing, logged and reversible.</p>
           <div class="hero-btns">
-            <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Start a Project</a>
+            <a data-book href="#" class="btn btn-primary"><i class="fas fa-calendar-check"></i> <span class="book-label">Request a free 20-min call</span></a>
+            <a data-wa href="#" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             <a href="#case-studies" class="btn btn-outline"><i class="fas fa-chart-line"></i> See Results</a>
-            <a href="assets/Avinash_Sahu_Resume.pdf" target="_blank" rel="noopener" class="btn btn-outline"><i class="fas fa-download"></i> Resume</a>
-            <a href="https://www.linkedin.com/in/avinash-sahu-0ba434181/" target="_blank" rel="noopener" class="btn btn-linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
           </div>
           <ul class="trust-row">
             <li><i class="fas fa-clock"></i> US time-zone overlap</li>
@@ -269,6 +268,30 @@
     </div>
   </section>
 
+  <!-- ===== TESTIMONIALS (hidden until real quotes are added in site.js) ===== -->
+  <section class="section" id="testimonials" hidden>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Kind Words</span>
+        <h2 class="section-title">What Clients <span class="gradient-text">Say</span></h2>
+      </div>
+      <div class="quote-grid" id="testimonialGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== FREE RESOURCES ===== -->
+  <section class="section" id="resources">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Free Resources</span>
+        <h2 class="section-title">Guides &amp; <span class="gradient-text">Checklists</span></h2>
+        <p class="section-sub">Practical Microsoft 365 and Intune help you can use today, no sign-up needed</p>
+      </div>
+      <div class="res-strip"><a class="res-card reveal" href="blog/dkim-dmarc-microsoft-365.html"><span class="res-tag">Guide</span><i class="fas fa-envelope-circle-check res-icon"></i><h3>SPF, DKIM and DMARC in Microsoft 365</h3><p>Exact DNS records and clicks.</p><span class="res-more">Open <i class="fas fa-arrow-right"></i></span></a><a class="res-card reveal" href="blog/intune-bitlocker-recovery-keys-missing.html"><span class="res-tag">Guide</span><i class="fas fa-lock res-icon"></i><h3>Intune BitLocker keys missing</h3><p>Five causes and the fix.</p><span class="res-more">Open <i class="fas fa-arrow-right"></i></span></a><a class="res-card reveal" href="resources/m365-security-health-check.html"><span class="res-tag">Free checklist</span><i class="fas fa-list-check res-icon"></i><h3>Security health check</h3><p>15 checks, printable PDF.</p><span class="res-more">Open <i class="fas fa-arrow-right"></i></span></a><a class="res-card reveal" href="resources/sample-work-report.html"><span class="res-tag">Free sample</span><i class="fas fa-file-lines res-icon"></i><h3>Sample project report</h3><p>Hours by day, every change counted.</p><span class="res-more">Open <i class="fas fa-arrow-right"></i></span></a></div>
+      <p style="text-align:center;margin-top:1.6rem"><a class="btn btn-outline" href="blog/"><i class="fas fa-book-open"></i> All guides and resources</a></p>
+    </div>
+  </section>
+
   <!-- ===== PROCESS ===== -->
   <section class="section" id="process">
     <div class="container">
@@ -388,6 +411,8 @@
           <div class="skill-chip"><i class="fas fa-server"></i> Hyper-V & Robocopy</div>
         </div>
 
+        <details class="skills-more">
+          <summary>More tools I work with</summary>
         <h3 class="skill-group-label">Cloud Platforms</h3>
         <div class="skills-row">
           <div class="skill-chip"><i class="fab fa-aws"></i> AWS</div>
@@ -445,6 +470,7 @@
           <div class="skill-chip"><i class="fas fa-graduation-cap"></i> LLM Integration</div>
         </div>
 
+        </details>
       </div>
     </div>
   </section>
@@ -822,10 +848,14 @@
       </div>
       <div class="cta-box reveal">
         <div>
-          <h3>Ready to start?</h3>
+          <h3>Ready to talk?</h3>
           <p>Microsoft 365, Intune, email security, cloud networking, Terraform and CI/CD for US teams.</p>
         </div>
-        <a href="mailto:avinashsahu7415@gmail.com?subject=Project%20enquiry%20from%20your%20portfolio&body=Hi Avinash,%0D%0A%0D%0AWhat I need help with:%0D%0A%0D%0ASystems involved (Microsoft 365, AWS, Azure, network...):%0D%0A%0D%0ATiming:%0D%0A%0D%0AThanks," class="btn btn-primary btn-lg"><i class="fas fa-paper-plane"></i> Email Me Your Request</a>
+        <div class="cta-actions">
+          <a data-book href="#" class="btn btn-primary btn-lg"><i class="fas fa-calendar-check"></i> <span class="book-label">Request a free 20-min call</span></a>
+          <a data-wa href="#" class="btn btn-outline btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <a href="mailto:avinashsahu7415@gmail.com?subject=Project%20enquiry%20from%20your%20portfolio&body=Hi%20Avinash,%0D%0A%0D%0AWhat%20I%20need%20help%20with:%0D%0A%0D%0ASystems%20involved%20(Microsoft%20365,%20AWS,%20Azure,%20network...):%0D%0A%0D%0ATiming:%0D%0A%0D%0AThanks," class="btn btn-outline btn-lg"><i class="fas fa-envelope"></i> Email</a>
+        </div>
       </div>
       <div class="contact-grid">
         <a href="mailto:avinashsahu7415@gmail.com" class="contact-card reveal">
@@ -838,10 +868,10 @@
           <h4>LinkedIn</h4>
           <p>Message me</p>
         </a>
-        <a href="https://github.com/1998avinashsahu" target="_blank" rel="noopener" class="contact-card reveal">
-          <i class="fab fa-github"></i>
-          <h4>GitHub</h4>
-          <p>1998avinashsahu</p>
+        <a data-wa href="#" class="contact-card reveal">
+          <i class="fab fa-whatsapp"></i>
+          <h4>WhatsApp</h4>
+          <p>Quick message</p>
         </a>
         <a href="assets/Avinash_Sahu_Resume.pdf" target="_blank" rel="noopener" class="contact-card reveal">
           <i class="fas fa-file-pdf"></i>
@@ -865,8 +895,9 @@
     </div>
   </footer>
 
-  <a href="#contact" class="sticky-cta" id="stickyCta"><i class="fas fa-paper-plane"></i> Start a project</a>
+  <a data-book href="#" class="sticky-cta" id="stickyCta"><i class="fas fa-calendar-check"></i> <span class="book-label">Request a free call</span></a>
 
+  <script src="site.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

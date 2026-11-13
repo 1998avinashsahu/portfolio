@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Intune BitLocker recovery keys go missing (and how to fix it) | Avinash Sahu</title>
+  <meta name="description" content="Laptops enrolled in Intune but no BitLocker recovery key in Microsoft Entra ID? The five usual causes, the exact policy settings to use, and how to fix devices that are already encrypted." />
+  <link rel="canonical" href="https://1998avinashsahu.github.io/portfolio/blog/intune-bitlocker-recovery-keys-missing.html" />
+  <meta name="theme-color" content="#0a1424" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Why Intune BitLocker recovery keys go missing (and how to fix it)" />
+  <meta property="og:description" content="Laptops enrolled in Intune but no BitLocker recovery key in Microsoft Entra ID? The five usual causes, the exact policy settings to use, and how to fix devices that are already encrypted." />
+  <meta property="og:url" content="https://1998avinashsahu.github.io/portfolio/blog/intune-bitlocker-recovery-keys-missing.html" />
+  <meta property="og:image" content="https://1998avinashsahu.github.io/portfolio/assets/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='43' font-size='30' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'%3EAS%3C/text%3E%3C/svg%3E" />
+  <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Why Intune BitLocker recovery keys go missing (and how to fix it)", "description": "Laptops enrolled in Intune but no BitLocker recovery key in Microsoft Entra ID? The five usual causes, the exact policy settings to use, and how to fix devices that are already encrypted.", "datePublished": "2026-11-13", "dateModified": "2026-11-13", "mainEntityOfPage": "https://1998avinashsahu.github.io/portfolio/blog/intune-bitlocker-recovery-keys-missing.html", "image": "https://1998avinashsahu.github.io/portfolio/assets/og-image.jpg", "author": {"@type": "Person", "name": "Avinash Sahu", "url": "https://1998avinashsahu.github.io/portfolio/"}}</script>
+</head>
+<body class="post-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="post-nav">
+    <div class="container post-nav-inner">
+      <a class="nav-logo" href="../">Avinash Sahu<span class="dot">.</span></a>
+      <nav aria-label="Main">
+        <a href="../#services">Services</a>
+        <a href="../#case-studies">Case Studies</a>
+        <a href="./">Blog</a>
+        <a href="../#contact" class="btn btn-sm btn-primary"><i class="fas fa-paper-plane"></i> Hire Me</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-sun icon-sun"></i><i class="fas fa-moon icon-moon"></i></button>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+
+    <article class="post container">
+      <p class="post-crumb"><a href="./">Blog</a> / Intune and devices</p>
+      <h1>Why Intune BitLocker recovery keys go missing (and how to fix it)</h1>
+      <p class="post-meta">By Avinash Sahu &middot; 13 November 2026 &middot; 7 min read</p>
+      <p class="lead">You enrolled the laptops in Intune and set a BitLocker policy. Then you open a device and find no recovery key, or the laptop is not encrypted at all. If that person is ever locked out, there is no way back in. This is how I find the cause and fix it.</p>
+
+      <h2>First: where should the key be?</h2>
+      <p>For a device that is joined to Microsoft Entra ID, the recovery key should be stored on the device record in Intune and in Microsoft Entra ID. Open the device and look for its recovery keys. If there is none, work through the causes below.</p>
+
+      <h2>The five usual causes</h2>
+      <h3>1. The device does not meet the requirements for silent encryption</h3>
+      <p>Microsoft lists the prerequisites for silent BitLocker encryption: a TPM, native UEFI mode, <strong>Secure Boot enabled</strong>, and Windows Recovery Environment (WinRE) available. If Secure Boot is switched off in the laptop firmware, silent encryption does not happen. This is the first thing I check on a stubborn laptop, and fixing it needs someone at the device (or on a call).</p>
+
+      <h3>2. The policy does not require the key to be stored first</h3>
+      <p>In the Intune BitLocker profile, Microsoft documents these two settings together:</p>
+      <ul>
+        <li><strong>Save BitLocker recovery information to Microsoft Entra ID</strong> = Enabled</li>
+        <li><strong>Store recovery information in Microsoft Entra ID before enabling BitLocker</strong> = Required</li>
+      </ul>
+      <p>The second setting makes BitLocker wait until the key is safely stored, so you never end up with an encrypted laptop and no key.</p>
+
+      <h3>3. The device was already encrypted before the policy arrived</h3>
+      <p>If BitLocker was already on, the key may never have been uploaded. The fix is to rotate the key, which creates a new one and stores it (see the fix below).</p>
+
+      <h3>4. The signed-in user is a standard user</h3>
+      <p>Encryption can wait for a prompt if the person is not an administrator and the policy does not allow standard users to encrypt. Microsoft documents the <code>AllowStandardUserEncryption</code> setting for this case.</p>
+
+      <h3>5. Two policies are fighting</h3>
+      <p>A second BitLocker profile, or an old Group Policy, can conflict. In Intune, open the profile's device status and look for conflicts or errors on the affected device.</p>
+
+      <h2>Check status across all devices</h2>
+      <p>Intune has an encryption report (Microsoft's page is called "Monitor device encryption with Intune"). It lists each device's encryption readiness, encryption status and TPM version, which usually points straight at the cause.</p>
+
+      <h2>Fix a device that is already encrypted</h2>
+      <ol>
+        <li>In the Intune admin center go to <strong>Devices, All devices</strong>, and select the device.</li>
+        <li>Choose the <strong>BitLocker key rotation</strong> remote action (use the ellipsis menu if you do not see it).</li>
+        <li>After the device checks in, confirm a new recovery key appears on the device record.</li>
+      </ol>
+      <p>To keep keys fresh, Microsoft also provides the <strong>Configure Recovery Password Rotation</strong> setting for automatic rotation. After a rotation the old key stops working, so note the date.</p>
+      <p>If you only need to push the existing key to Entra ID from the device, run this in an elevated PowerShell on that laptop. Test on one device first:</p>
+      <pre><code>$id = (Get-BitLockerVolume -MountPoint "C:").KeyProtector |
+      Where-Object KeyProtectorType -eq "RecoveryPassword" |
+      Select-Object -First 1 -ExpandProperty KeyProtectorId
+BackupToAAD-BitLockerKeyProtector -MountPoint "C:" -KeyProtectorId $id</code></pre>
+
+      <h2>Who can read the keys?</h2>
+      <p>Recovery keys are sensitive. Limit the roles that can read them to the few people who handle lockouts, and keep a note of who they are.</p>
+
+      <h2>From my own work</h2>
+      <p>On a rollout of six Windows laptops and an iPad, I configured BitLocker so it waits until the key is stored. Two laptops stayed unencrypted with no key. The likely cause was Secure Boot turned off in the firmware, so those needed someone at the device on a call. Setting the policy to require the key first meant none of the other laptops ended up encrypted without a recoverable key.</p>
+
+      <h2>Sources</h2>
+      <ul class="sources">
+        <li><a href="https://learn.microsoft.com/en-us/mem/intune/protect/encrypt-devices" target="_blank" rel="noopener">Microsoft Learn: Encrypt Windows devices with BitLocker using Intune</a></li>
+        <li><a href="https://learn.microsoft.com/en-us/mem/intune/protect/encryption-monitor" target="_blank" rel="noopener">Microsoft Learn: Monitor device encryption with Intune</a></li>
+      </ul>
+      <p class="post-note">Related: <a href="../resources/m365-security-health-check.html">Free Microsoft 365 security health check (15 checks)</a></p>
+    </article>
+
+    <section class="post-cta no-print">
+      <h2>Need a hand with this?</h2>
+      <p>I set this up for small US teams and nonprofits, with written approval for every change and a rollback plan. Tell me what you have and I will tell you the next step.</p>
+      <div class="cta-actions">
+        <a data-book class="btn btn-primary" href="#"><i class="fas fa-calendar-check"></i> <span class="book-label">Request a free 20-min call</span></a>
+        <a data-wa class="btn btn-outline" href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a class="btn btn-outline" href="mailto:avinashsahu7415@gmail.com?subject=Question%20from%20your%20blog"><i class="fas fa-envelope"></i> Email</a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer post-footer">
+    <div class="container">
+      <p class="footer-text">&copy; 2026 Avinash Sahu. Microsoft 365, cloud and network engineer. <a href="../">Home</a> &middot; <a href="./">Blog</a> &middot; <a href="../#contact">Contact</a></p>
+    </div>
+  </footer>
+  <script src="../site.js"></script>
+</body>
+</html>

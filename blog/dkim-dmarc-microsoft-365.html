@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to set up SPF, DKIM and DMARC in Microsoft 365 | Avinash Sahu</title>
+  <meta name="description" content="A plain-English, step-by-step guide to stopping spoofed email and spam-folder problems in Microsoft 365: the exact DNS records, where to click, and the mistakes to avoid." />
+  <link rel="canonical" href="https://1998avinashsahu.github.io/portfolio/blog/dkim-dmarc-microsoft-365.html" />
+  <meta name="theme-color" content="#0a1424" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How to set up SPF, DKIM and DMARC in Microsoft 365" />
+  <meta property="og:description" content="A plain-English, step-by-step guide to stopping spoofed email and spam-folder problems in Microsoft 365: the exact DNS records, where to click, and the mistakes to avoid." />
+  <meta property="og:url" content="https://1998avinashsahu.github.io/portfolio/blog/dkim-dmarc-microsoft-365.html" />
+  <meta property="og:image" content="https://1998avinashsahu.github.io/portfolio/assets/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='43' font-size='30' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'%3EAS%3C/text%3E%3C/svg%3E" />
+  <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to set up SPF, DKIM and DMARC in Microsoft 365", "description": "A plain-English, step-by-step guide to stopping spoofed email and spam-folder problems in Microsoft 365: the exact DNS records, where to click, and the mistakes to avoid.", "datePublished": "2026-11-13", "dateModified": "2026-11-13", "mainEntityOfPage": "https://1998avinashsahu.github.io/portfolio/blog/dkim-dmarc-microsoft-365.html", "image": "https://1998avinashsahu.github.io/portfolio/assets/og-image.jpg", "author": {"@type": "Person", "name": "Avinash Sahu", "url": "https://1998avinashsahu.github.io/portfolio/"}}</script>
+</head>
+<body class="post-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="post-nav">
+    <div class="container post-nav-inner">
+      <a class="nav-logo" href="../">Avinash Sahu<span class="dot">.</span></a>
+      <nav aria-label="Main">
+        <a href="../#services">Services</a>
+        <a href="../#case-studies">Case Studies</a>
+        <a href="./">Blog</a>
+        <a href="../#contact" class="btn btn-sm btn-primary"><i class="fas fa-paper-plane"></i> Hire Me</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-sun icon-sun"></i><i class="fas fa-moon icon-moon"></i></button>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+
+    <article class="post container">
+      <p class="post-crumb"><a href="./">Blog</a> / Email security</p>
+      <h1>How to set up SPF, DKIM and DMARC in Microsoft 365</h1>
+      <p class="post-meta">By Avinash Sahu &middot; 13 November 2026 &middot; 8 min read</p>
+      <p class="lead">If your email lands in spam, or someone sends mail that pretends to be your domain, the cause is usually missing email authentication. Three DNS-based checks fix most of it: <strong>SPF</strong>, <strong>DKIM</strong> and <strong>DMARC</strong>. This guide is for a Microsoft 365 tenant with its own domain. You need admin access to Microsoft 365 and to wherever your domain's DNS is hosted (often GoDaddy, Cloudflare or your registrar).</p>
+
+      <h2>What each one does</h2>
+      <div class="table-wrap"><table>
+        <tr><th>Check</th><th>In one sentence</th></tr>
+        <tr><td><strong>SPF</strong></td><td>Lists which servers are allowed to send mail for your domain.</td></tr>
+        <tr><td><strong>DKIM</strong></td><td>Adds a digital signature so receivers can verify the message really came from your domain and was not changed.</td></tr>
+        <tr><td><strong>DMARC</strong></td><td>Tells receivers what to do when SPF and DKIM fail, and sends you reports about it.</td></tr>
+      </table></div>
+
+      <h2>Before you start</h2>
+      <ol>
+        <li>Confirm your domain is verified in the Microsoft 365 admin center (Settings, then Domains).</li>
+        <li>Write down every service that sends email as your domain: newsletter tool, CRM, invoicing, website forms, printers.</li>
+        <li>Have the login for your DNS host ready.</li>
+      </ol>
+
+      <h2>Step 1: SPF</h2>
+      <p>Add one TXT record on the root of your domain (host <code>@</code>):</p>
+      <pre><code>v=spf1 include:spf.protection.outlook.com -all</code></pre>
+      <p>If other services also send as your domain, add their <code>include:</code> entries before <code>-all</code>. You can only have <strong>one</strong> SPF record per domain. Two records break SPF, so edit the existing one instead of adding a second.</p>
+
+      <h2>Step 2: DKIM</h2>
+      <ol>
+        <li>Open the Microsoft Defender portal (security.microsoft.com), then <strong>Email &amp; collaboration, Policies &amp; rules, Threat policies, Email authentication settings</strong>, and choose the <strong>DKIM</strong> tab.</li>
+        <li>Select your domain. Microsoft shows two CNAME records: <code>selector1._domainkey</code> and <code>selector2._domainkey</code>.</li>
+        <li>Add both as CNAME records at your DNS host. Many hosts add your domain automatically, so in the Host field you usually enter only <code>selector1._domainkey</code>, not the full name.</li>
+        <li>Wait for DNS to update. This can take from a few minutes to several hours.</li>
+        <li>Go back to the DKIM tab and switch on <strong>Sign messages for this domain with DKIM signatures</strong>.</li>
+      </ol>
+      <div class="callout"><strong>If you see "CNAME record does not exist":</strong> DNS has not updated yet, or the Host field has your domain twice (for example <code>selector1._domainkey.yourdomain.com.yourdomain.com</code>). Fix the host, wait, and try again.</div>
+      <p>You can also do it with PowerShell in Exchange Online:</p>
+      <pre><code>Connect-ExchangeOnline
+Get-DkimSigningConfig -Identity yourdomain.com | Format-List Selector1CNAME,Selector2CNAME
+Set-DkimSigningConfig -Identity yourdomain.com -Enabled $true</code></pre>
+
+      <h2>Step 3: DMARC</h2>
+      <p>Add a TXT record with the host <code>_dmarc</code>:</p>
+      <pre><code>v=DMARC1; p=none; rua=mailto:dmarc-reports@yourdomain.com</code></pre>
+      <p>Start with <code>p=none</code>. It only watches and reports, so no legitimate mail is blocked. Read the reports for two to four weeks (they are XML files, and several services offer free report readers). Fix any legitimate sender that fails. Then move to <code>p=quarantine</code>, and later to <code>p=reject</code> once everything passes.</p>
+
+      <h2>Step 4: Test it</h2>
+      <p>Send an email from your domain to a Gmail address. Open the message, choose <strong>Show original</strong>, and look for <strong>SPF: PASS</strong>, <strong>DKIM: PASS</strong> and <strong>DMARC: PASS</strong>.</p>
+
+      <h2>Common mistakes</h2>
+      <ul>
+        <li>Two SPF records on the same domain.</li>
+        <li>Forgetting a third-party sender (newsletter tool, CRM) and then moving DMARC to reject, which blocks your own mail.</li>
+        <li>Turning on DKIM before the CNAME records resolve.</li>
+        <li>Typing the full domain into a Host field that already adds it.</li>
+        <li>Jumping straight to <code>p=reject</code> without watching reports first.</li>
+        <li>Using a <code>rua</code> address that does not exist, so you never see the reports.</li>
+      </ul>
+
+      <h2>From my own work</h2>
+      <p>In a Microsoft 365 tenant I took over, DKIM was not set up and DMARC was monitor-only. I turned on DKIM first, left DMARC at monitor-only to watch the reports, and planned the move to stricter policies after that. Going in this order keeps real mail flowing while you tighten things.</p>
+
+      <h2>Sources</h2>
+      <ul class="sources">
+        <li><a href="https://learn.microsoft.com/en-us/defender-office-365/email-authentication-spf-configure" target="_blank" rel="noopener">Microsoft Learn: Set up SPF</a></li>
+        <li><a href="https://learn.microsoft.com/en-us/defender-office-365/email-authentication-dkim-configure" target="_blank" rel="noopener">Microsoft Learn: Set up DKIM</a></li>
+        <li><a href="https://learn.microsoft.com/en-us/defender-office-365/email-authentication-dmarc-configure" target="_blank" rel="noopener">Microsoft Learn: Set up DMARC</a></li>
+      </ul>
+      <p class="post-note">Related: <a href="../resources/m365-security-health-check.html">Free Microsoft 365 security health check (15 checks)</a></p>
+    </article>
+
+    <section class="post-cta no-print">
+      <h2>Need a hand with this?</h2>
+      <p>I set this up for small US teams and nonprofits, with written approval for every change and a rollback plan. Tell me what you have and I will tell you the next step.</p>
+      <div class="cta-actions">
+        <a data-book class="btn btn-primary" href="#"><i class="fas fa-calendar-check"></i> <span class="book-label">Request a free 20-min call</span></a>
+        <a data-wa class="btn btn-outline" href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a class="btn btn-outline" href="mailto:avinashsahu7415@gmail.com?subject=Question%20from%20your%20blog"><i class="fas fa-envelope"></i> Email</a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer post-footer">
+    <div class="container">
+      <p class="footer-text">&copy; 2026 Avinash Sahu. Microsoft 365, cloud and network engineer. <a href="../">Home</a> &middot; <a href="./">Blog</a> &middot; <a href="../#contact">Contact</a></p>
+    </div>
+  </footer>
+  <script src="../site.js"></script>
+</body>
+</html>

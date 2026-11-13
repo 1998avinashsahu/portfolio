@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microsoft 365 Security Health Check: 15 checks for small teams | Avinash Sahu</title>
+  <meta name="description" content="A free 15-point checklist to review the security of your Microsoft 365 tenant in about 30 minutes. What to check, where to look, and what good looks like. Printable PDF." />
+  <link rel="canonical" href="https://1998avinashsahu.github.io/portfolio/resources/m365-security-health-check.html" />
+  <meta name="theme-color" content="#0a1424" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Microsoft 365 Security Health Check: 15 checks for small teams" />
+  <meta property="og:description" content="A free 15-point checklist to review the security of your Microsoft 365 tenant in about 30 minutes. What to check, where to look, and what good looks like. Printable PDF." />
+  <meta property="og:url" content="https://1998avinashsahu.github.io/portfolio/resources/m365-security-health-check.html" />
+  <meta property="og:image" content="https://1998avinashsahu.github.io/portfolio/assets/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='43' font-size='30' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'%3EAS%3C/text%3E%3C/svg%3E" />
+  <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Microsoft 365 Security Health Check: 15 checks for small teams", "description": "A free 15-point checklist to review the security of your Microsoft 365 tenant in about 30 minutes. What to check, where to look, and what good looks like. Printable PDF.", "datePublished": "2026-11-13", "dateModified": "2026-11-13", "mainEntityOfPage": "https://1998avinashsahu.github.io/portfolio/resources/m365-security-health-check.html", "image": "https://1998avinashsahu.github.io/portfolio/assets/og-image.jpg", "author": {"@type": "Person", "name": "Avinash Sahu", "url": "https://1998avinashsahu.github.io/portfolio/"}}</script>
+</head>
+<body class="post-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="post-nav">
+    <div class="container post-nav-inner">
+      <a class="nav-logo" href="../">Avinash Sahu<span class="dot">.</span></a>
+      <nav aria-label="Main">
+        <a href="../#services">Services</a>
+        <a href="../#case-studies">Case Studies</a>
+        <a href="./">Blog</a>
+        <a href="../#contact" class="btn btn-sm btn-primary"><i class="fas fa-paper-plane"></i> Hire Me</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-sun icon-sun"></i><i class="fas fa-moon icon-moon"></i></button>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+
+    <article class="post container print-doc">
+      <p class="post-crumb no-print"><a href="./../blog/">Blog</a> / Free resources</p>
+      <h1>Microsoft 365 Security Health Check: 15 checks for small teams</h1>
+      <p class="post-meta">By Avinash Sahu &middot; November 2026 &middot; about 30 minutes</p>
+      <p class="lead">Go through these 15 checks with an admin account. Tick each one that passes. Anything you cannot tick, or cannot check, is where to look first.</p>
+      <p class="no-print"><a class="btn btn-primary" href="../assets/Microsoft-365-Security-Health-Check.pdf" download><i class="fas fa-file-pdf"></i> Download the PDF</a></p>
+      <div class="table-wrap"><table class="check-table">
+        <thead><tr><th></th><th>Check and why it matters</th><th>Where to look</th><th>What good looks like</th></tr></thead>
+        <tbody><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>1. MFA is registered for every user</strong><br><span class="c-why">Stolen passwords are the most common way in. MFA stops most of those attacks.</span></td><td class="c-where">Entra admin center, Protection, Authentication methods, Activity, User registration details</td><td class="c-good">Every user registered, or MFA enforced through Security defaults or Conditional Access.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>2. Only a few Global Administrators</strong><br><span class="c-why">Every admin account is a high-value target.</span></td><td class="c-where">Entra admin center, Roles &amp; admins, Global Administrator</td><td class="c-good">A small number of named people (Microsoft recommends fewer than five). None used for daily work.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>3. An emergency access (break-glass) account exists</strong><br><span class="c-why">If MFA or a policy locks everyone out, this account gets you back in.</span></td><td class="c-where">Microsoft Learn: Manage emergency access accounts</td><td class="c-good">At least one cloud-only account, long random password stored offline, sign-ins monitored.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>4. Security defaults or Conditional Access is on</strong><br><span class="c-why">Gives a baseline of protections without extra work.</span></td><td class="c-where">Entra admin center, Overview, Properties, Manage security defaults</td><td class="c-good">One of the two is enabled. Do not run both at once.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>5. Legacy sign-in methods are blocked</strong><br><span class="c-why">Old protocols cannot do MFA, so attackers use them.</span></td><td class="c-where">Entra sign-in logs, filter by client app</td><td class="c-good">No successful sign-ins from legacy protocols.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>6. External auto-forwarding is blocked</strong><br><span class="c-why">Attackers forward mail out to read it later.</span></td><td class="c-where">Defender portal, Policies, Anti-spam, Outbound spam policy, Automatic forwarding</td><td class="c-good">Set to system-controlled or off, unless a business reason is documented.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>7. No suspicious inbox rules</strong><br><span class="c-why">Hidden rules can forward or delete mail silently.</span></td><td class="c-where">Exchange Online PowerShell: Get-InboxRule per mailbox</td><td class="c-good">No rules that forward externally or move mail to odd folders.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>8. Shared mailboxes cannot be signed into</strong><br><span class="c-why">A shared mailbox with a password becomes a login anyone can share.</span></td><td class="c-where">Microsoft 365 admin center, Users, shared mailbox account</td><td class="c-good">Sign-in blocked. Access given through delegation instead.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>9. Licences match your people</strong><br><span class="c-why">Leavers holding licences cost money. Lapsed subscriptions disable services.</span></td><td class="c-where">Microsoft 365 admin center, Billing, Licenses</td><td class="c-good">No leavers licensed, no duplicates, no lapsed or disabled subscriptions.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>10. Third-party app access is reviewed</strong><br><span class="c-why">Old apps can keep reading mail and files long after they are forgotten.</span></td><td class="c-where">Entra admin center, Enterprise applications, and user consent settings</td><td class="c-good">No unknown apps with mailbox or file access. User consent restricted.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>11. SPF, DKIM and DMARC are set up</strong><br><span class="c-why">Stops spoofing of your domain and helps your mail reach inboxes.</span></td><td class="c-where">DNS plus the Defender portal, Email authentication settings</td><td class="c-good">All three pass. DMARC at least monitoring with reports read.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>12. Work devices are encrypted and managed</strong><br><span class="c-why">A lost laptop should not mean lost data.</span></td><td class="c-where">Intune admin center, encryption report</td><td class="c-good">All work laptops encrypted, recovery keys stored in Entra ID.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>13. The audit log is on</strong><br><span class="c-why">Without it you cannot investigate a suspected breach.</span></td><td class="c-where">Microsoft Purview, Audit</td><td class="c-good">Auditing enabled and you know how far back it goes.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>14. External sharing is limited</strong><br><span class="c-why">Anyone-links and unreviewed guests leak files.</span></td><td class="c-where">SharePoint admin center, Policies, Sharing</td><td class="c-good">Sharing set to the narrowest level the business needs. Guests reviewed.</td></tr><tr><td class="c-box"><span class="box" aria-hidden="true"></span></td><td><strong>15. There is a recovery plan</strong><br><span class="c-why">Microsoft keeps deleted items for a limited time. That is not a full backup.</span></td><td class="c-where">Your own plan, written down</td><td class="c-good">You know how to restore a deleted file, a mailbox and a leaver, and who does it.</td></tr></tbody>
+      </table></div>
+      <h2>How to read your result</h2>
+      <ul>
+        <li><strong>13 to 15 ticked:</strong> good shape. Re-check every quarter.</li>
+        <li><strong>9 to 12 ticked:</strong> fix the gaps this month, starting with MFA, admins and forwarding.</li>
+        <li><strong>8 or fewer:</strong> treat it as urgent. A review now is cheaper than a clean-up after an incident.</li>
+      </ul>
+      <p class="post-note">This is a practical starting checklist, not legal or compliance advice. Menu names in Microsoft portals change from time to time.</p>
+      <p class="post-note print-only">avinashs portfolio: 1998avinashsahu.github.io/portfolio &middot; avinashsahu7415@gmail.com</p>
+      <p class="post-note no-print">Related guides: <a href="../blog/dkim-dmarc-microsoft-365.html">SPF, DKIM and DMARC</a> &middot; <a href="../blog/intune-bitlocker-recovery-keys-missing.html">Intune BitLocker keys</a></p>
+    </article>
+    <section class="post-cta no-print">
+      <h2>Want a second pair of eyes?</h2>
+      <p>Send me your ticks, or let me run the checks read-only for you. You get a plain-English list of the top fixes, and nothing changes without your approval.</p>
+      <div class="cta-actions">
+        <a data-book class="btn btn-primary" href="#"><i class="fas fa-calendar-check"></i> <span class="book-label">Request a free 20-min call</span></a>
+        <a data-wa class="btn btn-outline" href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a class="btn btn-outline" href="mailto:avinashsahu7415@gmail.com?subject=Security%20health%20check"><i class="fas fa-envelope"></i> Email</a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer post-footer">
+    <div class="container">
+      <p class="footer-text">&copy; 2026 Avinash Sahu. Microsoft 365, cloud and network engineer. <a href="../">Home</a> &middot; <a href="./">Blog</a> &middot; <a href="../#contact">Contact</a></p>
+    </div>
+  </footer>
+  <script src="../site.js"></script>
+</body>
+</html>

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://1998avinashsahu.github.io/portfolio/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://1998avinashsahu.github.io/portfolio/</loc><lastmod>2026-11-13</lastmod><priority>1.0</priority></url>
+  <url><loc>https://1998avinashsahu.github.io/portfolio/blog/</loc><lastmod>2026-11-13</lastmod><priority>0.7</priority></url>
+  <url><loc>https://1998avinashsahu.github.io/portfolio/blog/dkim-dmarc-microsoft-365.html</loc><lastmod>2026-11-13</lastmod><priority>0.7</priority></url>
+  <url><loc>https://1998avinashsahu.github.io/portfolio/blog/intune-bitlocker-recovery-keys-missing.html</loc><lastmod>2026-11-13</lastmod><priority>0.7</priority></url>
+  <url><loc>https://1998avinashsahu.github.io/portfolio/resources/m365-security-health-check.html</loc><lastmod>2026-11-13</lastmod><priority>0.7</priority></url>
+  <url><loc>https://1998avinashsahu.github.io/portfolio/resources/sample-work-report.html</loc><lastmod>2026-11-13</lastmod><priority>0.7</priority></url>
 </urlset>

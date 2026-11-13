@@ -287,6 +287,15 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   };
 
+  function ctaLinks() {
+    var S = window.SITE || {};
+    var out = S.bookingUrl
+      ? `<a href="${S.bookingUrl}" target="_blank" rel="noopener" style="color:var(--accent)">Book a free 20-min call</a>`
+      : `<a href="mailto:${S.email || KB.email}?subject=Free%2020-minute%20call%20request" style="color:var(--accent)">Request a free 20-min call</a>`;
+    if (S.whatsapp) out += ` or <a href="https://wa.me/${S.whatsapp}" target="_blank" rel="noopener" style="color:var(--accent)">message on WhatsApp</a>`;
+    return out;
+  }
+
   // --- Intent Matching ---
   function generateReply(input) {
     const q = input.toLowerCase();
@@ -297,13 +306,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Client questions (checked first) ---
+    if (/guide|checklist|resource|blog|article|sample report|how to set up|template|free/.test(q)) {
+      return `<b>Free guides & resources:</b><br><br>` +
+        `• <a href="blog/dkim-dmarc-microsoft-365.html" style="color:var(--accent)">SPF, DKIM and DMARC in Microsoft 365</a><br>` +
+        `• <a href="blog/intune-bitlocker-recovery-keys-missing.html" style="color:var(--accent)">Why Intune BitLocker keys go missing</a><br>` +
+        `• <a href="resources/m365-security-health-check.html" style="color:var(--accent)">Security health check (15 checks, PDF)</a><br>` +
+        `• <a href="resources/sample-work-report.html" style="color:var(--accent)">Sample project report</a>`;
+    }
     if (/availab|when can|how soon|get started|how (do|to) (we |i )?start|start a project|onboard|what do you need|capacity/.test(q)) {
       return `<b>Availability & getting started:</b><br><br>` +
         `• Avinash is <b>open to new projects</b><br>` +
         `• Send two or three lines about the problem<br>` +
         `• He replies with questions or a clear next step<br>` +
         `• To start he needs: a short description, a contact who can approve changes, and an admin invite<br><br>` +
-        `<a href="mailto:avinashsahu7415@gmail.com?subject=Project%20enquiry%20from%20your%20portfolio" style="color:var(--accent)">Email your request</a>`;
+        ctaLinks();
     }
     if (/pric(e|ing)|how much|quote|hourly|per hour|budget|rate card|\brates?\b|retainer|fixed[- ]scope|what do you charge/.test(q)) {
       return `<b>Pricing:</b><br><br>` +
@@ -311,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `• <b>Hourly support</b> with a short written summary of work and hours<br>` +
         `• <b>Fixed-scope project</b> with a quote after a read-only audit<br>` +
         `• <b>Ongoing care</b> with monthly reports and support<br><br>` +
-        `<a href="mailto:avinashsahu7415@gmail.com?subject=Project%20enquiry%20from%20your%20portfolio" style="color:var(--accent)">Email what you need</a> and he will suggest the best fit.`;
+        ctaLinks() + `<br>He will suggest the best fit.`;
     }
     if (/service|offer|what (do|can) you (do|help)|can you help|help (me|us)|what do you do/.test(q)) {
       return `<b>Services:</b><br><br>` +
