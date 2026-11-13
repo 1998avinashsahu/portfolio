@@ -222,15 +222,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Knowledge Base ---
   const KB = {
     name: "Avinash Sahu",
-    title: "Sr. DevOps & Cloud Engineer",
+    title: "Microsoft 365, Cloud, Network & DevOps Engineer",
     company: "Trinesis Technologies",
-    experience: "3+ years",
+    experience: "Almost 4 years",
     email: "avinashsahu7415@gmail.com",
     linkedin: "https://www.linkedin.com/in/avinash-sahu-0ba434181/",
     github: "https://github.com/1998avinashsahu",
     portfolio: "https://1998avinashsahu.github.io/portfolio/",
 
     skills: {
+      m365: ["Exchange Online (mailbox conversion, delegation, forwarding and mail-flow control)", "Entra ID (users, groups, admin roles, MFA, break-glass accounts)", "Intune for Windows and iOS (compliance, BitLocker, Autopilot, Apple APNs)", "Defender, firewall and Edge policies", "SPF, DKIM and DMARC email security", "Licence management and security incident response", "PowerShell with Microsoft Graph and Exchange Online modules"],
+      network: ["AWS VPC, subnets, route tables, NAT Gateway, VPC Peering", "Security Groups and NACLs", "Cloud-to-on-premise VPN", "DNS and Route 53, ALB/NLB, CloudFront, AWS WAF", "TLS 1.2/1.3 and mutual TLS", "Wireshark and tcpdump troubleshooting", "Working knowledge (lab level): FortiGate, OSPF/BGP, VLANs, SD-WAN concepts, Hyper-V"],
       cloud: ["AWS (ECS Fargate, Lambda, RDS, S3, CloudWatch)", "GCP (Cloud Run, Cloud SQL, Secret Manager)", "Azure (AKS, ACR, Key Vault)"],
       iac: ["Terraform (9,000+ lines production)", "Docker", "Kubernetes", "Helm", "Ansible"],
       cicd: ["Jenkins (Multibranch, Seed Jobs)", "GitHub Actions", "ArgoCD (GitOps)", "AWS CodeDeploy", "Azure DevOps"],
@@ -242,6 +244,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
 
     highlights: [
+      "126 Microsoft 365 tenant changes with zero incidents and zero mail lost",
+      "Built Intune from scratch for Windows and iOS devices (BitLocker, Autopilot, APNs)",
+      "Designed VPC/VNet networks on AWS, Azure and GCP, including an air-gapped VPC for FedRAMP",
       "Managing 6 concurrent projects across AWS, GCP, and Azure for US-based clients",
       "Deployed 45+ microservices with 50+ CI/CD pipelines",
       "Wrote 9,000+ lines of production Terraform",
@@ -271,6 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
 
     whyHire: [
+      "Microsoft 365 and network skills on top of DevOps: Exchange Online, Entra ID, Intune, email security and cloud networking",
       "Multi-cloud expertise: production experience across AWS, GCP, and Azure — not just one cloud",
       "Security-first mindset: FedRAMP/FIPS compliance with zero violations",
       "Cost optimizer: proven 40% cloud cost reduction through right-sizing and serverless",
@@ -289,6 +295,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return `Hello! I'm ${KB.name}'s AI assistant. I can tell you about his <b>skills</b>, <b>experience</b>, <b>projects</b>, <b>certifications</b>, or <b>why you should hire him</b>. What would you like to know?`;
     }
 
+    // Microsoft 365 / network
+    if (/microsoft|m365|365|intune|exchange|entra|office|dkim|dmarc|spf|email security/.test(q)) {
+      return `<b>Microsoft 365 & Email Security:</b><br>` + KB.skills.m365.map(s => `• ${s}`).join('<br>');
+    }
+    if (/network|vpn|firewall|fortigate|dns|routing|subnet|vpc/.test(q)) {
+      return `<b>Network Engineering:</b><br>` + KB.skills.network.map(s => `• ${s}`).join('<br>');
+    }
+
     // Skills
     if (/skill|tech|stack|tool|what (can|does) he (do|know|use)|expertise|proficien/.test(q)) {
       if (/cloud/.test(q)) return `<b>Cloud Platforms:</b><br>` + KB.skills.cloud.map(s => `• ${s}`).join('<br>');
@@ -300,6 +314,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (/python|bash|language|coding|program/.test(q)) return `<b>Languages:</b><br>` + KB.skills.languages.map(s => `• ${s}`).join('<br>') + `<br><br><b>Databases:</b><br>` + KB.skills.databases.map(s => `• ${s}`).join('<br>');
 
       return `<b>${KB.name}'s Tech Stack:</b><br><br>` +
+        `<b>Microsoft 365:</b> Exchange Online, Entra ID, Intune, Defender<br>` +
+        `<b>Network:</b> VPC/VNet, VPN, DNS, TLS<br>` +
         `<b>Cloud:</b> AWS, GCP, Azure<br>` +
         `<b>IaC:</b> Terraform (9K+ lines), Docker, K8s, Helm<br>` +
         `<b>CI/CD:</b> Jenkins, GitHub Actions, ArgoCD, CodeDeploy<br>` +
@@ -347,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `📧 <b>Email:</b> <a href="mailto:${KB.email}" style="color:var(--accent)">${KB.email}</a><br>` +
         `💼 <b>LinkedIn:</b> <a href="${KB.linkedin}" target="_blank" style="color:var(--accent)">Connect on LinkedIn</a><br>` +
         `💻 <b>GitHub:</b> <a href="${KB.github}" target="_blank" style="color:var(--accent)">1998avinashsahu</a><br><br>` +
-        `He's currently <b>open to opportunities</b> in DevOps, Cloud Engineering, and AI-related roles!`;
+        `He's currently <b>open to opportunities</b> in Microsoft 365, Network, Cloud Engineering, DevOps, and AI-related roles!`;
     }
 
     // AWS specific
@@ -421,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Resume
     if (/resume|cv|download/.test(q)) {
       return `You can download Avinash's resume here:<br><br>` +
-        `<a href="https://github.com/1998avinashsahu/1998avinashsahu/blob/main/AvinashSahu_DevOps_Resume.pdf" target="_blank" style="color:var(--accent)">📄 Download Resume (PDF)</a>`;
+        `<a href="https://1998avinashsahu.github.io/portfolio/assets/Avinash_Sahu_Resume.pdf" target="_blank" style="color:var(--accent)">📄 Download Resume (PDF)</a>`;
     }
 
     // Thank you
