@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "126 Microsoft 365 tenant changes with zero incidents and zero mail lost",
       "Built Intune from scratch for Windows and iOS devices (BitLocker, Autopilot, APNs)",
       "Designed VPC/VNet networks on AWS, Azure and GCP, including an air-gapped VPC for FedRAMP",
-      "Managing 6 concurrent projects across AWS, GCP, and Azure for US-based clients",
+      "Managing 6 concurrent projects across AWS, GCP, and Azure for international clients",
       "Deployed 45+ microservices with 50+ CI/CD pipelines",
       "Wrote 9,000+ lines of production Terraform",
       "Achieved 40% cloud cost optimization",
@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (/time ?zone|working hours|overlap|central time|\bcst\b|\best\b|\bpst\b/.test(q)) {
       return `<b>Time zone:</b><br><br>` +
-        `Avinash works from India and overlaps with <b>US Central morning hours</b> for calls. Most work is done on his own time, with a short written update at the end of each day.`;
+        `Avinash works from India and adjusts to your time zone. For clients in the Americas he overlaps with <b>their morning hours</b>. Most work is done on his own time, with a short written update at the end of each day.`;
     }
 
     // Microsoft 365 / network
@@ -397,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `<b>Experience:</b> ${KB.experience}<br><br>` +
         `<b>Key Achievements:</b><br>` +
         KB.highlights.map(h => `• ${h}`).join('<br>') +
-        `<br><br>He manages production multi-cloud infrastructure for US-based clients across AWS, GCP & Azure.`;
+        `<br><br>He manages production multi-cloud infrastructure for international clients across AWS, GCP & Azure.`;
     }
 
     // Projects
@@ -486,8 +486,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (/where|location|city|country|remote|onsite|relocat/.test(q)) {
       return `<b>Location & Availability:</b><br><br>` +
         `• Based in India<br>` +
-        `• Currently working with US-based clients remotely<br>` +
-        `• Experienced with US timezone collaboration<br>` +
+        `• Currently working remotely with clients abroad<br>` +
+        `• Comfortable working across time zones<br>` +
         `• Open to remote and hybrid opportunities`;
     }
 
